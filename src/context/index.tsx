@@ -1,8 +1,8 @@
 import { createContext, useEffect, useState } from "react";
 import { useLocalStorage } from "../hooks/useLocalStorage";
-import { ReactProps } from "./interfaces";
+import { ContextProps, ReactProps } from "./interfaces";
 
-const AppContext = createContext({});
+const AppContext = createContext({} as ContextProps);
 
 function AppProvider({children}: ReactProps) {
   const {value, setValue} = useLocalStorage('user', {});
