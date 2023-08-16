@@ -1,12 +1,9 @@
-/* eslint-disable no-debugger */
 import { useForm } from "react-hook-form";
 import { useApp } from "../../hooks/useApp";
 import { LoginProps } from "./interfaces";
 
 function Login() {
 
-
-  
 const {register, handleSubmit, reset} = useForm();
 const {setValue} = useApp();
 
