@@ -1,17 +1,17 @@
 export interface StoreProps {
-  razSoc?: string;
+  corpName?: string;
   cnpj?: string;
-  nomFant?: string;
+  tradingName?: string;
   email?: string;
-  telf?: string;
-  telc?: string;
+  tel?: string;
+  cel?: string;
   cep?: string;
-  endereco?: string;
+  address?: string;
   num?: string;
-  bairro?: string;
-  cidade?: string;
-  uf?: string;
-  complemento?: string;
+  neighborhood?: string;
+  city?: string;
+  state?: string;
+  complement?: string;
   lat?: string;
   long?: string;
 }

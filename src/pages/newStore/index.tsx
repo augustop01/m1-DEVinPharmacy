@@ -1,12 +1,57 @@
 import { useForm } from "react-hook-form";
 import { PageHr } from "./styles";
 import { StoreProps } from "./interfaces";
+import { api } from "../../services/api";
 
 function NewStore() {
-  const { register, handleSubmit, reset } = useForm();
+  const { register, handleSubmit, setValue} = useForm();
 
   function onSubmit(data: StoreProps) {
     localStorage.setItem("localizacao", JSON.stringify(data))
+  }
+
+  function CNPJ (e: React.FormEvent<HTMLInputElement>){
+    const cnpj = e.currentTarget.value.replace(/\D/g, '')
+    .replace(/(\d{2})(\d)/, '$1.$2')
+    .replace(/(\d{3})(\d)/, '$1.$2')
+    .replace(/(\d{3})(\d)/, '$1/$2')
+    .replace(/(\d{4})(\d)/, '$1-$2')
+    .replace(/(-\d{2})\d+?$/, '$1')
+    setValue('cnpj', cnpj)
+  }
+
+  function Tel(e: React.FormEvent<HTMLInputElement>) {
+    const tel = e.currentTarget.value.replace(/\D/g, '')
+    .replace(/(\d{2})(\d)/, '($1) $2')
+    .replace(/(\d{4})(\d)/, '$1-$2')
+    .replace(/(-\d{4})\d+?$/, '$1')
+    setValue('tel', tel)
+  }
+
+  function Cel(e: React.FormEvent<HTMLInputElement>) {
+    const cel = e.currentTarget.value.replace(/\D/g, '')
+    .replace(/(\d{2})(\d)/, '($1) $2')
+    .replace(/(\d{5})(\d)/, '$1-$2')
+    .replace(/(-\d{4})\d+?$/, '$1')
+    setValue('cel', cel)
+  }
+
+  function GetCEP(e: React.FormEvent<HTMLInputElement>) {
+    const load = async () => {
+      const cep = e.currentTarget.value.replace(/\D/g, '')
+      const response = (await api.get(`${cep}`)).data;
+      setValue('street', response.street);
+      setValue('neighborhood', response.neighborhood);
+      setValue('city', response.city);
+      setValue('state', response.state);
+      setValue('lat', response.location.coordinates.latitude);
+      setValue('long', response.location.coordinates.longitude);
+    }
+    const cep = e.currentTarget.value.replace(/\D/g, '')
+    .replace(/(\d{5})(\d)/, '$1-$2')
+    .replace(/(-\d{3})\d+?$/, '$1');
+    setValue('cep', cep)
+      load()
   }
 
   return (
@@ -17,7 +62,7 @@ function NewStore() {
         <PageHr />
         <input
           type="text"
-          {...register("razSoc")}
+          {...register("corpName")}
           alt="Digite a razão social da loja."
           placeholder="Razão social"
           required
@@ -27,11 +72,12 @@ function NewStore() {
           {...register("cnpj")}
           alt="Digite o CNPJ da loja."
           placeholder="CNPJ (somente números)"
+          onBlur={CNPJ}
           required
         />
         <input
           type="text"
-          {...register("nomFant")}
+          {...register("tradingName")}
           alt="Digite o nome fantasia da loja."
           placeholder="Nome Fantasia"
           required
@@ -45,16 +91,17 @@ function NewStore() {
         />
         <input
           type="text"
-          {...register("telf")}
+          {...register("tel")}
           alt="Opcional: Digite o número de telefone fixo da loja."
           placeholder="Telefone (opcional)"
-          required
+          onBlur={Tel}
         />
         <input
           type="text"
-          {...register("telc")}
+          {...register("cel")}
           alt="Digite o número de telefone celular da loja."
           placeholder="Celular"
+          onBlur={Cel}
           required
         />
         <fieldset>
@@ -64,11 +111,12 @@ function NewStore() {
             {...register("cep")} 
             alt="Digite o CEP da loja."
             placeholder="CEP (somente números)"
+            onBlur={GetCEP}
             required
           />
           <input
             type="text"
-            {...register("endereco")} 
+            {...register("street")} 
             alt="Digite o Logradouro/Endereço da loja."
             placeholder="Logradouro/Endereço"
             required
@@ -82,31 +130,30 @@ function NewStore() {
           />
           <input
             type="text"
-            {...register("bairro")} 
+            {...register("neighborhood")} 
             alt="Digite o bairro em que se encontra a loja."
             placeholder="Bairro"
             required
           />
           <input
             type="text"
-            {...register("cidade")} 
+            {...register("city")} 
             alt="Digite a cidade em que se encontra a loja."
             placeholder="Cidade"
             required
           />
           <input
             type="text"
-            {...register("uf")} 
+            {...register("state")} 
             alt="Digite o estado (unidade federal) em que se encontra a loja."
             placeholder="Estado (UF)"
             required
           />
           <input
             type="text"
-            {...register("complemento")} 
+            {...register("complement")} 
             alt="Opcional: digite um complemento referente à loja."
             placeholder="Complemento (opcional)"
-            required
           />
           <fieldset>
             <legend>Geolocalização:</legend>
