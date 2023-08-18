@@ -4,7 +4,7 @@ import { StoreProps } from "./interfaces";
 import { api } from "../../services/api";
 
 function NewStore() {
-  const { register, handleSubmit, setValue} = useForm();
+  const { register, handleSubmit, setValue, reset} = useForm();
 
   function onSubmit(data: StoreProps) {
     localStorage.setItem("localizacao", JSON.stringify(data))
@@ -173,7 +173,8 @@ function NewStore() {
             />
           </fieldset>
         </fieldset>
-        <button>Cadastrar</button>
+        <button type="submit"> Cadastrar </button>
+        <input type="button" onClick={() => reset()} value=" Limpar " style={{marginLeft: '2rem'}}/>
       </form>
     </div>
   );
