@@ -4,10 +4,15 @@ import { StoreProps } from "./interfaces";
 import { api } from "../../services/api";
 
 function NewStore() {
-  const { register, handleSubmit, setValue} = useForm();
+  const { register, handleSubmit, setValue, reset} = useForm();
+  let stores: object[] = [];
+  if(localStorage.getItem("stores")){
+    stores = JSON.parse(localStorage.getItem("stores") || "{}");
+  }
 
   function onSubmit(data: StoreProps) {
-    localStorage.setItem("localizacao", JSON.stringify(data))
+    stores = [...stores, data]
+    localStorage.setItem("stores", JSON.stringify(stores))
   }
 
   function CNPJ (e: React.FormEvent<HTMLInputElement>){
@@ -105,7 +110,7 @@ function NewStore() {
           required
         />
         <fieldset>
-          <legend>Endereço:</legend>
+          <legend {...register("address")}>Endereço:</legend>
           <input
             type="text"
             {...register("cep")} 
@@ -173,7 +178,8 @@ function NewStore() {
             />
           </fieldset>
         </fieldset>
-        <button>Cadastrar</button>
+        <button type="submit"> Cadastrar </button>
+        <input type="button" onClick={() => reset()} value=" Limpar " style={{marginLeft: '2rem'}}/>
       </form>
     </div>
   );
