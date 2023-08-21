@@ -5,14 +5,19 @@ import { api } from "../../services/api";
 
 function NewStore() {
   const { register, handleSubmit, setValue, reset} = useForm();
-  let stores: object[] = [];
-  if(localStorage.getItem("stores")){
-    stores = JSON.parse(localStorage.getItem("stores") || "{}");
+  let stores: object[] = []
+
+  if(!localStorage.getItem("localizacao")) {
+    stores = []
+  }
+
+  if(localStorage.getItem("localizacao")){
+    stores = JSON.parse(localStorage.getItem("localizacao") || "{}");
   }
 
   function onSubmit(data: StoreProps) {
     stores = [...stores, data]
-    localStorage.setItem("stores", JSON.stringify(stores))
+    localStorage.setItem("localizacao", JSON.stringify(stores))
   }
 
   function CNPJ (e: React.FormEvent<HTMLInputElement>){
