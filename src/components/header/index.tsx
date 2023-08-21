@@ -13,6 +13,9 @@ function Header() {
         <StyledA href='/cadastro-medicamento'>
           <StyledLi>Novo Medicamento</StyledLi>
         </StyledA>
+        <StyledA href='/mapa-lojas'>
+          <StyledLi>Mapa</StyledLi>
+        </StyledA>
         <StyledA href='/medicamentos'>
           <StyledLi>Medicamentos</StyledLi>
         </StyledA>

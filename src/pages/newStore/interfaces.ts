@@ -5,13 +5,15 @@ export interface StoreProps {
   email?: string;
   tel?: string;
   cel?: string;
-  cep?: string;
-  address?: string;
-  num?: string;
-  neighborhood?: string;
-  city?: string;
-  state?: string;
-  complement?: string;
-  lat?: string;
-  long?: string;
+  lat?: number;
+  long?: number;
+  address?: {
+    cep?: string;
+    street?: string;
+    num?: string;
+    neighborhood?: string;
+    city?: string;
+    state?: string;
+    complement?: string;
+  }
 }

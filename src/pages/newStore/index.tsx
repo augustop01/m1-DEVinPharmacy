@@ -164,14 +164,14 @@ function NewStore() {
             <legend>Geolocalização:</legend>
             <input
               type="text"
-              {...register("lat")} 
+              {...register("lat", {valueAsNumber: true})} 
               alt="Digite a latitude referente à localização da loja."
               placeholder="Latitude"
               required
             />
             <input
               type="text"
-              {...register("long")} 
+              {...register("long", {valueAsNumber: true})} 
               alt="Digite a longitude referente à localização da loja."
               placeholder="Longitude"
               required

@@ -2,7 +2,8 @@ import { AppProvider } from "./context";
 import { PublicRoutes } from "./routes/publicRoutes";
 import {BrowserRouter} from "react-router-dom";
 import { GlobalStyle } from "./style";
-import { Header } from "./components/header";
+import { Header } from "./components/Header";
+import 'leaflet/dist/leaflet.css';
 
 function App() {
   return (
