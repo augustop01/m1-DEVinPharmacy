@@ -2,10 +2,17 @@ import { useForm } from "react-hook-form";
 import { ProductProps } from "./interfaces";
 
 function NewProduct() {
-  const { register, handleSubmit, setValue, reset } = useForm();
+  const { register, handleSubmit, reset } = useForm();
+
+  let products: object[] = [];
+
+  if(localStorage.getItem("products")){
+    products = JSON.parse(localStorage.getItem("products") || "{}");
+  }
 
   function onSubmit(data: ProductProps) {
-    localStorage.setItem("medicamentos", JSON.stringify(data))
+    products = [...products, data]
+    localStorage.setItem("products", JSON.stringify(products))
   }
 
   return (
