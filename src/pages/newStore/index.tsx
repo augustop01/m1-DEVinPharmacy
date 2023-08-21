@@ -50,17 +50,17 @@ function NewStore() {
     const load = async () => {
       const cep = e.currentTarget.value.replace(/\D/g, '')
       const response = (await api.get(`${cep}`)).data;
-      setValue('street', response.street);
-      setValue('neighborhood', response.neighborhood);
-      setValue('city', response.city);
-      setValue('state', response.state);
+      setValue('address.street', response.street);
+      setValue('address.neighborhood', response.neighborhood);
+      setValue('address.city', response.city);
+      setValue('address.state', response.state);
       setValue('lat', response.location.coordinates.latitude);
       setValue('long', response.location.coordinates.longitude);
     }
     const cep = e.currentTarget.value.replace(/\D/g, '')
     .replace(/(\d{5})(\d)/, '$1-$2')
     .replace(/(-\d{3})\d+?$/, '$1');
-    setValue('cep', cep)
+    setValue('address.cep', cep)
       load()
   }
 
@@ -118,7 +118,7 @@ function NewStore() {
           <legend {...register("address")}>Endereço:</legend>
           <input
             type="text"
-            {...register("cep")} 
+            {...register("address.cep")} 
             alt="Digite o CEP da loja."
             placeholder="CEP (somente números)"
             onBlur={GetCEP}
@@ -126,42 +126,42 @@ function NewStore() {
           />
           <input
             type="text"
-            {...register("street")} 
+            {...register("address.street")} 
             alt="Digite o Logradouro/Endereço da loja."
             placeholder="Logradouro/Endereço"
             required
           />
           <input
             type="text"
-            {...register("num")} 
+            {...register("address.num")} 
             alt="Digite o número da loja."
             placeholder="Número"
             required
           />
           <input
             type="text"
-            {...register("neighborhood")} 
+            {...register("address.neighborhood")} 
             alt="Digite o bairro em que se encontra a loja."
             placeholder="Bairro"
             required
           />
           <input
             type="text"
-            {...register("city")} 
+            {...register("address.city")} 
             alt="Digite a cidade em que se encontra a loja."
             placeholder="Cidade"
             required
           />
           <input
             type="text"
-            {...register("state")} 
+            {...register("address.state")} 
             alt="Digite o estado (unidade federal) em que se encontra a loja."
             placeholder="Estado (UF)"
             required
           />
           <input
             type="text"
-            {...register("complement")} 
+            {...register("address.complement")} 
             alt="Opcional: digite um complemento referente à loja."
             placeholder="Complemento (opcional)"
           />
