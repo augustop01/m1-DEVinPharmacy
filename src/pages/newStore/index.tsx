@@ -55,7 +55,7 @@ function NewStore() {
   }
 
   return (
-    <div>
+    <main>
       <form onSubmit={handleSubmit(onSubmit)}>
         <h3>Cadastro de farmácia</h3>
         <p>Digite corretamente as informações de endereço da nova loja</p>
@@ -176,7 +176,7 @@ function NewStore() {
         <button type="submit"> Cadastrar </button>
         <input type="button" onClick={() => reset()} value=" Limpar " style={{marginLeft: '2rem'}}/>
       </form>
-    </div>
+    </main>
   );
 }
 
