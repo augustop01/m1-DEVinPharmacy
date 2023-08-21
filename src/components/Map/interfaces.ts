@@ -1,5 +1,5 @@
-import { LatLngExpression } from "leaflet";
 import { StoreProps } from "../../pages/newStore/interfaces";
+import { LatLngExpression } from "leaflet";
 
 export interface MapProps {
   positions: StoreProps[];

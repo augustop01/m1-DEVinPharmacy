@@ -1,13 +1,19 @@
-import { Map } from "../../components/Map"
+import { Map } from '../../components/Map';
+import {useState, useEffect} from "react"
+import { StoreProps } from '../newStore/interfaces';
 
 function StoresMap () {
+  const [stores, setStores] = useState<StoreProps[]>([]);
 
-
-  const response = JSON.parse(localStorage.getItem("stores") || "{}");
-
-  console.log(response)
-
-  if(response?.length === 0) {
+  useEffect(() => {
+    const load = async () => {
+      const response =  JSON.parse(localStorage.getItem("localizacao") || "{}")
+      setStores(response)
+    }
+    load()
+  }, [])
+  
+  if (stores.length == 0){
     return (
       <>
       <h1>Nenhuma loja foi registrada ainda.</h1>
@@ -15,12 +21,12 @@ function StoresMap () {
       </>
     )
   }
-
+    console.log(stores[0])
   return (
-    <>
-      <Map positions={response} center={[response[0].lat, response[0].long]}/>
-    </>
+      <>
+        <Map positions={stores} center={[-26.3008481, -48.8240764]}/>
+      </>
   )
-}
-
+  }
+  
 export {StoresMap}

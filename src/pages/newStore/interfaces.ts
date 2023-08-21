@@ -5,8 +5,8 @@ export interface StoreProps {
   email?: string;
   tel?: string;
   cel?: string;
-  lat: number;
-  long: number;
+  lat?: number;
+  long?: number;
   address?: {
     cep?: string;
     street?: string;

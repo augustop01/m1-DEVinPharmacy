@@ -6,13 +6,14 @@ import { api } from "../../services/api";
 function NewStore() {
   const { register, handleSubmit, setValue, reset} = useForm();
   let stores: object[] = [];
-  if(localStorage.getItem("stores")){
-    stores = JSON.parse(localStorage.getItem("stores") || "{}");
+
+  if(localStorage.getItem("localizacao")){
+  stores = JSON.parse(localStorage.getItem("localizacao") || "{}");
   }
 
   function onSubmit(data: StoreProps) {
     stores = [...stores, data]
-    localStorage.setItem("stores", JSON.stringify(stores))
+    localStorage.setItem("localizacao", JSON.stringify(stores))
   }
 
   function CNPJ (e: React.FormEvent<HTMLInputElement>){
@@ -164,14 +165,14 @@ function NewStore() {
             <legend>Geolocalização:</legend>
             <input
               type="text"
-              {...register("lat")} 
+              {...register("lat", {valueAsNumber: true})} 
               alt="Digite a latitude referente à localização da loja."
               placeholder="Latitude"
               required
             />
             <input
               type="text"
-              {...register("long")} 
+              {...register("long", {valueAsNumber: true})} 
               alt="Digite a longitude referente à localização da loja."
               placeholder="Longitude"
               required
