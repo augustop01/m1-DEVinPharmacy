@@ -3,6 +3,7 @@ import { MapProps } from './interfaces';
 import {MapContainerStyled, MarkerStyled, PopupStyled} from './styles'
 
 function Map({positions, center}: MapProps) {
+  console.log(positions)
     return (
       <MapContainerStyled center={center} zoom={13}>
         <TileLayer

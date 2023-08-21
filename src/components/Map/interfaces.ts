@@ -4,6 +4,7 @@ import { LatLngExpression } from "leaflet";
 export interface MapProps {
   positions: StoreProps[];
   center: LatLngExpression;
+  address?: {
     cep?: string;
     street?: string;
     num?: string;
@@ -11,6 +12,7 @@ export interface MapProps {
     city?: string;
     state?: string;
     complement?: string;
+  }
     lat?: number;
     long?: number;
 }
