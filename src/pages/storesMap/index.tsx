@@ -2,9 +2,12 @@ import { Map } from "../../components/Map"
 
 function StoresMap () {
 
-  const response = localStorage.getItem("stores");
-  
-  if(response == null) {
+
+  const response = JSON.parse(localStorage.getItem("stores") || "{}");
+
+  console.log(response)
+
+  if(response?.length === 0) {
     return (
       <>
       <h1>Nenhuma loja foi registrada ainda.</h1>
@@ -13,11 +16,9 @@ function StoresMap () {
     )
   }
 
-  const storeList = JSON.parse(response);
-
   return (
     <>
-      <Map position={[storeList[0].lat, storeList[0].long]} address={storeList[0]}/>
+      <Map positions={response} center={[response[0].lat, response[0].long]}/>
     </>
   )
 }

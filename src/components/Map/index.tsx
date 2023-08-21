@@ -2,19 +2,26 @@ import { TileLayer } from 'react-leaflet';
 import { MapProps } from './interfaces';
 import { MapContainerStyled, MarkerStyled, PopupStyled } from "./styles"
 
-function Map({address, position}: MapProps) {
+function Map({positions, center}: MapProps) {
   return (
-    <MapContainerStyled center={position} zoom={13}>
-      <MarkerStyled position={position}>
+    <MapContainerStyled center={center} zoom={13}>
       <TileLayer
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
       />
+      {
+        positions.map(({lat, long}, index) => {
+          return ( 
+            <MarkerStyled position={[lat, long]} key={index}>
+              <PopupStyled>
+              </PopupStyled>
+            </MarkerStyled>
+          )
+        })
+      }
         <PopupStyled>
-          <p>{address.street} {address.num}, {address.neighborhood}</p>
-          <p>{address.city}, {address.state}, {address.cep}</p>
         </PopupStyled>
-      </MarkerStyled>
+      
     </MapContainerStyled>
   );
 }
