@@ -14,8 +14,6 @@ function MedCards({meds}: MedProps) {
                 </span>
                 <div>
                   <p>{med.name} {med.dose}</p>
-                  <p>{med.lab}</p>
-                  <p>{med.isControlled === "true" ? "Medicamento controlado" : "Medicamento comum"}</p>
                   <p>R${med.price}</p>
                   <button type="button">Adicionar</button>
                 </div>
