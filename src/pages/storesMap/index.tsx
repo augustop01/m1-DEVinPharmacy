@@ -7,7 +7,7 @@ function StoresMap () {
 
   useEffect(() => {
     const load = async () => {
-      const response =  JSON.parse(localStorage.getItem("localizacao") || "{}")
+      const response =  JSON.parse(localStorage.getItem("localizacao") || "")
       setStores(response)
     }
     load()
