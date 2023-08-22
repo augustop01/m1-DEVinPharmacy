@@ -21,7 +21,6 @@ function StoresMap () {
       </>
     )
   }
-    console.log(stores[0].address)
   return (
       <>
         <Map positions={stores} center={[-26.3008481, -48.8240764]}/>

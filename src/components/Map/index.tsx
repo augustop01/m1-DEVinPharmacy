@@ -3,7 +3,6 @@ import { MapProps } from './interfaces';
 import {MapContainerStyled, MarkerStyled, PopupStyled} from './styles'
 
 function Map({positions, center}: MapProps) {
-  console.log(positions)
     return (
       <MapContainerStyled center={center} zoom={13}>
         <TileLayer
@@ -11,11 +10,21 @@ function Map({positions, center}: MapProps) {
         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
       />
       {
-      positions.map(({lat, long}, index) => {
+      positions.map(({lat, long, address, about}, index) => {
         return(
       <MarkerStyled position={[lat!, long!]} key={index}>
         <PopupStyled>
-          Teste
+          <p>{about?.tradingName}</p>
+          <p>{address?.street}, {address?.num}</p>
+          <p>{address?.neighborhood}, {address?.city}, {address?.state} - {address?.cep}</p>
+          <h4>Contato:</h4>
+          <a>{about?.tel}</a>
+          <br />
+          <a href={`https://wa.me/55${about?.cel}`}>{about?.cel}</a>
+          <p>-------------</p>
+          <p>{about?.corpName} - [CNPJ: {about?.cnpj}]</p>
+          
+          
         </PopupStyled>
       </MarkerStyled>
         )

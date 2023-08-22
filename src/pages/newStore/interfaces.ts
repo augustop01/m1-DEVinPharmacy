@@ -1,12 +1,14 @@
 export interface StoreProps {
+  lat?: number;
+  long?: number;
+  about?:{
   corpName?: string;
   cnpj?: string;
   tradingName?: string;
   email?: string;
   tel?: string;
   cel?: string;
-  lat?: number;
-  long?: number;
+  }
   address?: {
     cep?: string;
     street?: string;

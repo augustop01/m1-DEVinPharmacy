@@ -27,7 +27,7 @@ function NewStore() {
     .replace(/(\d{3})(\d)/, '$1/$2')
     .replace(/(\d{4})(\d)/, '$1-$2')
     .replace(/(-\d{2})\d+?$/, '$1')
-    setValue('cnpj', cnpj)
+    setValue('about.cnpj', cnpj)
   }
 
   function Tel(e: React.FormEvent<HTMLInputElement>) {
@@ -35,7 +35,7 @@ function NewStore() {
     .replace(/(\d{2})(\d)/, '($1) $2')
     .replace(/(\d{4})(\d)/, '$1-$2')
     .replace(/(-\d{4})\d+?$/, '$1')
-    setValue('tel', tel)
+    setValue('about.tel', tel)
   }
 
   function Cel(e: React.FormEvent<HTMLInputElement>) {
@@ -43,7 +43,7 @@ function NewStore() {
     .replace(/(\d{2})(\d)/, '($1) $2')
     .replace(/(\d{5})(\d)/, '$1-$2')
     .replace(/(-\d{4})\d+?$/, '$1')
-    setValue('cel', cel)
+    setValue('about.cel', cel)
   }
 
   function GetCEP(e: React.FormEvent<HTMLInputElement>) {
@@ -72,14 +72,14 @@ function NewStore() {
         <PageHr />
         <input
           type="text"
-          {...register("corpName")}
+          {...register("about.corpName")}
           alt="Digite a razão social da loja."
           placeholder="Razão social"
           required
         />
         <input
           type="text"
-          {...register("cnpj")}
+          {...register("about.cnpj")}
           alt="Digite o CNPJ da loja."
           placeholder="CNPJ (somente números)"
           onBlur={CNPJ}
@@ -87,28 +87,28 @@ function NewStore() {
         />
         <input
           type="text"
-          {...register("tradingName")}
+          {...register("about.tradingName")}
           alt="Digite o nome fantasia da loja."
           placeholder="Nome Fantasia"
           required
         />
         <input
           type="email"
-          {...register("email")}
+          {...register("about.email")}
           alt="Digite o e-mail de uso da loja."
           placeholder="E-mail"
           required
         />
         <input
           type="text"
-          {...register("tel")}
+          {...register("about.tel")}
           alt="Opcional: Digite o número de telefone fixo da loja."
           placeholder="Telefone (opcional)"
           onBlur={Tel}
         />
         <input
           type="text"
-          {...register("cel")}
+          {...register("about.cel")}
           alt="Digite o número de telefone celular da loja."
           placeholder="Celular"
           onBlur={Cel}
