@@ -3,14 +3,21 @@ import { ProductProps } from "./interfaces";
 
 function NewProduct() {
   const { register, handleSubmit, reset } = useForm();
-
-  let products: object[] = [];
+  let products: ProductProps[] = [];
 
   if(localStorage.getItem("products")){
     products = JSON.parse(localStorage.getItem("products") || "{}");
   }
 
   function onSubmit(data: ProductProps) {
+    if(!localStorage.getItem("products")){
+      products = [];
+    }
+    for(let i = 0; i < products.length; i++){
+      if(products[i].name == data.name && products[i].dose == data.dose){
+        return alert("Já existe um medicmento com o mesmo nome e dosagem.")
+      }
+    }
     products = [...products, data]
     localStorage.setItem("products", JSON.stringify(products))
   }
@@ -68,8 +75,8 @@ function NewProduct() {
           <option value="option0" hidden>
             Selecione o tipo do medicamento
           </option>
-          <option value="option1">Medicamento controlado</option>
-          <option value="option2">Medicamento comum</option>
+          <option value="comum">Medicamento comum</option>
+          <option value="controlado">Medicamento controlado</option>
         </select>
         <button type="submit"> Cadastrar </button>
         <input type="button" onClick={() => reset()} value=" Limpar " />
