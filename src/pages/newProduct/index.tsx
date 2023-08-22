@@ -71,7 +71,7 @@ function NewProduct() {
           placeholder="(R$) Preço unitário"
           required
         />
-        <select {...register("isControlled")}>
+        <select {...register("isControlled") }>
           <option value="option0" hidden>
             Selecione o tipo do medicamento
           </option>

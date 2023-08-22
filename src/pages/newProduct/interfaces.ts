@@ -4,5 +4,5 @@ export interface ProductProps {
   dose?: string,
   price?: number,
   description?: string,
-  isControlled?: boolean
+  isControlled?: string
 }
