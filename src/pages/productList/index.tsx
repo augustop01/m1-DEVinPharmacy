@@ -1,5 +1,6 @@
 import {useState, useEffect} from "react"
 import { ProductProps } from "../newProduct/interfaces"
+import { MedCards } from "../../components/MedCards"
 
 function ProductList() {
   const [products, setProducts] = useState<ProductProps[]>([])
@@ -23,7 +24,7 @@ function ProductList() {
   return(
     <main>
       <div>
-        {/* <Card articles={""}/> */}
+        <MedCards meds={products}/>
       </div>
     </main>
   )
