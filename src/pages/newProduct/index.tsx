@@ -71,12 +71,12 @@ function NewProduct() {
           placeholder="(R$) Preço unitário"
           required
         />
-        <select {...register("nature")}>
+        <select {...register("isControlled")}>
           <option value="option0" hidden>
             Selecione o tipo do medicamento
           </option>
-          <option value="comum">Medicamento comum</option>
-          <option value="controlado">Medicamento controlado</option>
+          <option value="false">Medicamento comum</option>
+          <option value="true">Medicamento controlado</option>
         </select>
         <button type="submit"> Cadastrar </button>
         <input type="button" onClick={() => reset()} value=" Limpar " />
