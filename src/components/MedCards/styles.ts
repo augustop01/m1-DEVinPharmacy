@@ -29,7 +29,7 @@ export const ModalContainer = styled.section`
   box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.3);
   animation-name: ${growAnimation};
   animation-duration: 0.25s;
-  background-color: white;
+  background-color: #E5E5E5;
   border-radius: 1rem;
   box-sizing: border-box;
   display: flex;

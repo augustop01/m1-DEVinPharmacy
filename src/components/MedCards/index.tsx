@@ -16,13 +16,21 @@ function MedCards({meds}: MedProps) {
 
   function changeContent(order: string | undefined) {
     const id = Number(isClicked?.id)
-    if(order === "next" && id < meds!.length) {
-      const newId = String(id + 1)
+    if(meds!.length > 1){
+      if(order === "next" && id < meds!.length) {
+        const newId = String(id + 1)
+        return setIsClicked(meds!.find(x => x.id === newId))
+      }
+      if(order === "next" && id == meds?.length){
+        return setIsClicked(meds!.find(x => x.id === '1'))
+      }
+      if(order === "prev" && id > 1){
+      const newId = String(id - 1)
       return setIsClicked(meds!.find(x => x.id === newId))
-    }
-    if(order === "prev" && id > 1){
-    const newId = String(id - 1)
-    return setIsClicked(meds!.find(x => x.id === newId))
+      }
+      if(order === "prev" && id == 1){
+        return setIsClicked(meds!.find(x => x.id == meds?.length))
+      }
     }
   }
 
@@ -43,7 +51,7 @@ function MedCards({meds}: MedProps) {
                 </div>
               </div>
           )
-        },
+        }
         )
       }
       <Modal isOpen={isOpen} toggle={toggle}>
@@ -54,7 +62,7 @@ function MedCards({meds}: MedProps) {
           <Styled.ModalStyle>
             <h1>{isClicked?.name}</h1>
             <h3>{isClicked?.dose}</h3>
-            <img src={(isClicked?.isControlled === 'true') ? "img/med-controlado.png" : "img/med-comum.png"} alt="" width={150}/>
+            <img src={(isClicked?.isControlled === 'true') ? "img/med-controlado2.png" : "img/med-comum2.png"} alt="" width={150}/>
             <h4>{(isClicked?.isControlled === 'true') ? "Medicamento Controlado" : "Medicamento Comum"}</h4>
             <p>{isClicked?.description}</p>
             <h5>Laboratório [{isClicked?.lab}]</h5>
