@@ -19,6 +19,8 @@ function NewProduct() {
       }
     }
     products = [...products, data]
+    const i = products.length-1;
+    products[i] = {...products[i], id: `${products.length}` || undefined}
     localStorage.setItem("products", JSON.stringify(products))
   }
 
