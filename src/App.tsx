@@ -1,9 +1,9 @@
 import { AppProvider } from "./context";
-import { PublicRoutes } from "./routes/publicRoutes";
 import {BrowserRouter} from "react-router-dom";
 import { GlobalStyle } from "./style";
 import { Header } from "./components/Header";
 import 'leaflet/dist/leaflet.css';
+import { RoutesApp } from "./routes";
 
 function App() {
   return (
@@ -12,7 +12,7 @@ function App() {
       <GlobalStyle/>
       <AppProvider>
         <Header/>
-        <PublicRoutes/>
+        <RoutesApp/>
       </AppProvider>
     </BrowserRouter>
     </>
