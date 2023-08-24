@@ -17,6 +17,7 @@ function ProductList() {
     return(
       <main>
         <h1>Não existem medicamentos cadastrados.</h1>
+        <p><a href="/cadastro-medicamento">{`Clique aqui `}</a>para registrar um novo medicamento.</p>
       </main>
     )
   }
