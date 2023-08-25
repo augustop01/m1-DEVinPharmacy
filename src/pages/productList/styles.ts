@@ -7,7 +7,7 @@ flex-direction: column;
 
 export const FilterSectStyled = styled.section`
 box-sizing: border-box;
-padding: 1rem 12rem;
+padding: .5rem 12rem;
 background-color: #E0E0E0;
 display: flex;
 justify-content: space-between;
@@ -36,12 +36,11 @@ width: 60%;
 `
 
 export const CardsSectStyled = styled.section`
-padding: 0 12rem;
+padding: 0 6rem;
 display: flex;
 align-items: center;
 flex-wrap: wrap;
 justify-content: space-around;
 width: 100%;
-min-height: 60vh;
-max-height: 150vh;
+min-height: 83vh;
 `

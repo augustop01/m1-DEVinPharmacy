@@ -47,7 +47,6 @@ function MedCards({meds}: MedProps) {
                   <i/>
                 </Styled.SpanStyled>
                   <Styled.PPriceStyled>R${med.price}</Styled.PPriceStyled>
-                  <Styled.ButtonStyled type="button">Adicionar</Styled.ButtonStyled>
               </Styled.DivContainerStyled>
           )
         }
@@ -56,18 +55,17 @@ function MedCards({meds}: MedProps) {
       <Modal isOpen={isOpen} toggle={toggle}>
         <Styled.ModalBgDiv onClick={toggle}/>
         <Styled.ModalContainer>  
-          <Styled.BtnClose onClick={toggle}>X</Styled.BtnClose>
+          <Styled.BtnClose onClick={toggle}>x</Styled.BtnClose>
           <Styled.BtnPrev onClick={function(){changeContent("prev")}}>{`<<`}</Styled.BtnPrev>
           <Styled.ModalStyle>
-            <h1>{isClicked?.name}</h1>
-            <h3>{isClicked?.dose}</h3>
-            <img src={(isClicked?.isControlled === 'true') ? "img/med-controlado2.png" : "img/med-comum2.png"} alt="" width={150}/>
-            <h4>{(isClicked?.isControlled === 'true') ? "Medicamento Controlado" : "Medicamento Comum"}</h4>
-            <p>{isClicked?.description}</p>
-            <h5>Laboratório [{isClicked?.lab}]</h5>
-            <h2>R${isClicked?.price}</h2>
-            <h5>Preço unitário</h5>
-            <button type="button"> + Adicionar </button>
+            <Styled.PNameModal>{isClicked?.name}</Styled.PNameModal>
+            <Styled.PDoseModal>{isClicked?.dose}</Styled.PDoseModal>
+            <Styled.ImgModal src={(isClicked?.isControlled === 'true') ? "img/med-controlado2.png" : "img/med-comum2.png"} alt=""/>
+            <Styled.PLabModal>Laboratório [{isClicked?.lab}]</Styled.PLabModal>
+            <Styled.PNatureModal isControlled={isClicked?.isControlled === 'true'}>{(isClicked?.isControlled === 'true') ? "Medicamento Controlado" : "Medicamento Comum"}</Styled.PNatureModal>
+            <Styled.PPriceModal>R${isClicked?.price}</Styled.PPriceModal>
+            <Styled.PUnitModal>Valor unitário</Styled.PUnitModal>
+            <Styled.PInfoModal hasDescription={isClicked?.description}>{isClicked?.description ? `${isClicked.description}` : `Não foi adicionada nenhuma descrição para este medicamento.`}</Styled.PInfoModal>
           </Styled.ModalStyle>
           <Styled.BtnNext onClick={function(){changeContent("next")}}>{`>>`}</Styled.BtnNext>
         </Styled.ModalContainer>
