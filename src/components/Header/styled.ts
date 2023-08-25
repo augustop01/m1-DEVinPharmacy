@@ -1,6 +1,7 @@
 import {styled} from 'styled-components';
 
 const PageHeader = styled.header`
+  position: sticky;
   box-sizing: border-box;
   background-color: #ffffff;
   box-shadow: 1px 1px 10px rgba(0, 0, 255, 0.3);
@@ -10,6 +11,7 @@ const PageHeader = styled.header`
   width: 100%;
   height: 4rem;
   overflow: hidden;
+  top: 0;
   z-index: 999;
 `
 
