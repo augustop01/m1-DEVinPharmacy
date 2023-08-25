@@ -2,6 +2,67 @@ import styled, { keyframes } from "styled-components";
 
 //Card container
 
+
+export const PNameStyled = styled.p`
+color: #0900ad;
+margin-top: 0.5rem;
+font-weight: 800;
+`
+
+export const PDoseStyled = styled.p`
+color: #8a8a8a;
+font-size: 0.75rem;
+font-weight: 800;
+margin-top: -0.2rem;
+margin-bottom: 0.25rem;
+`
+
+export const ImgStyled = styled.img`
+background-color: #efefef;
+border-radius: 1rem;
+`
+
+export const SpanStyled = styled.span`
+
+`
+
+export const PPriceStyled = styled.p`
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: #ff7700;
+  margin: 1rem;
+  `
+
+export const ButtonStyled = styled.button`
+  margin-bottom: 0.5rem;
+  `
+
+  export const DivContainerStyled = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-sizing: border-box;
+  padding: 0 1.5rem;
+  border-radius: 1rem;
+  border: blue 1px solid;
+  background-color: white;
+  height: fit-content;
+  margin: 0.5rem 1rem;
+    &:hover{
+      background-color: #F0F0F0;
+      cursor: pointer;
+      ${PDoseStyled} {
+        color: blue;
+      }
+      ${ImgStyled}{
+        background-color: white;
+      }
+    }
+  `
+
+
+
+
 //---------- MedCards Modal tags
 // Modal container
 const fadeAnimation = keyframes`

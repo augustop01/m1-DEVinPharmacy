@@ -1,6 +1,7 @@
 import {BaseSyntheticEvent, useEffect, useState} from "react"
 import { ProductProps } from "../newProduct/interfaces"
 import { MedCards } from "../../components/MedCards"
+import * as styled from "./styles"
 
 function ProductList() {
   const response: ProductProps[] = JSON.parse(localStorage.getItem("products") || "");
@@ -54,32 +55,33 @@ if(products.length === 0) {
     setNameFilter(event.target.value)}
 
   return(
-    <main>
-      <section>
-        <form>
-          <select onChange={filterType}>
-            <option value="option0" hidden>
+    <styled.MainStyled>
+      <styled.FilterSectStyled>
+      <styled.H2Styled>Medicamentos registrados</styled.H2Styled>
+        <styled.FormStyled>
+          <styled.SelectStyled onChange={filterType}>
+            <styled.OptionStyled value=".0" hidden>
               Filtrar por tipo
-            </option>
-            <option value="no-filter">Todos</option>
-            <option value="false">Comum</option>
-            <option value="true">Controlado</option>
-            <option value="alpha">Ordem Alfabética</option>
-            <option value="rise">Preço crescente</option>
-            <option value="desc">Preço decrescente</option>
-          </select>
-          <input 
+            </styled.OptionStyled>
+            <styled.OptionStyled value="no-filter">Todos</styled.OptionStyled>
+            <styled.OptionStyled value="false">Comum</styled.OptionStyled>
+            <styled.OptionStyled value="true">Controlado</styled.OptionStyled>
+            <styled.OptionStyled value="alpha">Ordem Alfabética</styled.OptionStyled>
+            <styled.OptionStyled value="rise">Preço crescente</styled.OptionStyled>
+            <styled.OptionStyled value="desc">Preço decrescente</styled.OptionStyled>
+          </styled.SelectStyled>
+          <styled.InputStyled 
           type="text" 
           alt="Pesquise medicamentos pelo nome"
           placeholder="Pesquise medicamentos pelo nome"
           onChange={filterName}
           />
-        </form>
-      </section>
-      <section style={{display: "flex", justifyContent: "space-around"}}>
+        </styled.FormStyled>
+      </styled.FilterSectStyled>
+      <styled.CardsSectStyled>
         <MedCards meds={medList}/>
-      </section>
-    </main>
+      </styled.CardsSectStyled>
+    </styled.MainStyled>
   )
 }
 

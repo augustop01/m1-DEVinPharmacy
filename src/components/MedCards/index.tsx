@@ -39,17 +39,16 @@ function MedCards({meds}: MedProps) {
       {
         meds!.map((med, index) => {
           return(
-              <div key={index} style={{backgroundColor: "grey", width:"10rem", display: "flex", flexDirection: "column", alignItems: "center", margin: "2rem 0"}} id={med.id}>
-                <img src={(med.isControlled === 'true') ? "img/med-controlado.png" : "img/med-comum.png"} alt={(med.isControlled === 'true') ? "Ilustração de medicamento controlado" : "lustração de medicamento comum"} width={150} style={{marginTop: "0.3rem"}}/>
-                <span>
+            <Styled.DivContainerStyled key={index} id={med.id}  onClick={function() {setModal(med.id)}}>
+                <Styled.PNameStyled>{med.name}</Styled.PNameStyled>
+                <Styled.PDoseStyled>{med.dose}</Styled.PDoseStyled>
+                <Styled.ImgStyled src={(med.isControlled === 'true') ? "img/med-controlado2.png" : "img/med-comum2.png"} alt={(med.isControlled === 'true') ? "Ilustração de medicamento controlado" : "lustração de medicamento comum"} width={150}/>
+                <Styled.SpanStyled>
                   <i/>
-                </span>
-                <div>
-                  <p>{med.name} {med.dose}</p>
-                  <p>R${med.price}</p>
-                  <button type="button" onClick={function() {setModal(med.id)}}>Adicionar</button>
-                </div>
-              </div>
+                </Styled.SpanStyled>
+                  <Styled.PPriceStyled>R${med.price}</Styled.PPriceStyled>
+                  <Styled.ButtonStyled type="button">Adicionar</Styled.ButtonStyled>
+              </Styled.DivContainerStyled>
           )
         }
         )
