@@ -61,11 +61,11 @@ if(products.length === 0) {
         <styled.FormStyled>
           <styled.SelectStyled onChange={filterType}>
             <styled.OptionStyled value=".0" hidden>
-              Filtrar por tipo
+              Forma de exibição
             </styled.OptionStyled>
             <styled.OptionStyled value="no-filter">Todos</styled.OptionStyled>
-            <styled.OptionStyled value="false">Comum</styled.OptionStyled>
-            <styled.OptionStyled value="true">Controlado</styled.OptionStyled>
+            <styled.OptionStyled value="false">Somente comuns</styled.OptionStyled>
+            <styled.OptionStyled value="true">Somente controlados</styled.OptionStyled>
             <styled.OptionStyled value="alpha">Ordem Alfabética</styled.OptionStyled>
             <styled.OptionStyled value="rise">Preço crescente</styled.OptionStyled>
             <styled.OptionStyled value="desc">Preço decrescente</styled.OptionStyled>

@@ -25,14 +25,33 @@ width: 50%;
 `
 
 export const SelectStyled = styled.select`
+box-sizing: border-box;
+border: rgb(156, 156, 255) solid 1px;
+box-shadow: 0px -1px 1px rgb(156, 156, 255);
+border-radius: .25rem;
+font-size: .9rem;
 margin-right: 1rem;
+padding: .5rem;
+&:first-child{
+  color: #a9a9a9;
+}
 `
 
 export const OptionStyled = styled.option`
+color: #808080;
 `
 
 export const InputStyled = styled.input`
+box-sizing: border-box;
+border: rgb(156, 156, 255) solid 1px;
+box-shadow: 0px -1px 1px rgb(156, 156, 255);
+border-radius: .25rem;
+padding: .5rem;
+font-size: .9rem;
 width: 60%;
+&::placeholder{
+  color: #a9a9a9;
+}
 `
 
 export const CardsSectStyled = styled.section`
