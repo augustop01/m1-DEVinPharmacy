@@ -9,8 +9,8 @@ const PageHeader = styled.header`
   align-items: center;
   width: 100%;
   height: 4rem;
-  margin-bottom: 1rem;
   overflow: hidden;
+  z-index: 999;
 `
 
 const StyledUl = styled.nav`
