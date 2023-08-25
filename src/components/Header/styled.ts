@@ -3,7 +3,7 @@ import {styled} from 'styled-components';
 const PageHeader = styled.header`
   position: relative;
   box-sizing: border-box;
-  background-color: #ffffff;
+  background: rgb(63, 50, 156);
   box-shadow: 1px 1px 10px rgba(0, 0, 255, 0.3);
   display: flex;
   justify-content: space-around;
@@ -16,47 +16,51 @@ const PageHeader = styled.header`
 `
 
 const StyledUl = styled.nav`
-margin: 0 3rem;
   display: flex;
   list-style: none;
   justify-content: space-between;
   align-items: center;
   width: 100%;
+  padding: 0 3rem;
 `
 const StyledA = styled.a`
+box-sizing: border-box;
 text-decoration: none;
 display: flex;
 align-items: center;
 justify-content: center;
+pointer-events: none;
+width: 25%;
 &:last-of-type{
-  margin-right: 1.75rem;
 }
 `
 
 const StyledLi = styled.li`
+box-sizing: border-box;
   text-transform: uppercase;
   line-height: 1.35rem;
   display: flex;
   justify-content: center;
   text-align: center;
   align-items: center;
-  -webkit-text-stroke: 1px blue;
-  height: 4rem;
-  color: rgb(200,200,255);
+  /* -webkit-text-stroke: 1px blue; */
+  color: #ffffff;
   font-size: 1.25rem;
   font-weight: 600;
   text-decoration: none;
+  padding: 0 5rem;
   width: 10rem;
+  padding: 5rem;
+  pointer-events: all;
   &:hover {
-    color: blue;
-    text-shadow: 0px 0px 30px rgba(0,0,255,0.5);
-    transition: 0.25s;
+    cursor: pointer;
+    scale: 1.05;
   }
 `
 const StyledImg = styled.span`
 background: url("/img/pharm-logo-sm.png") no-repeat center;
-background-size: 100% 90%;
-width: 10rem;
+background-size: 50% 95%;
+width: 100%;
 height: 4rem;
 height: 3.5;
 `
