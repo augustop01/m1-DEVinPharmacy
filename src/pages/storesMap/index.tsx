@@ -1,6 +1,7 @@
 import { Map } from '../../components/Map';
 import {useState, useEffect} from "react"
 import { StoreProps } from '../newStore/interfaces';
+import { H1Styled, MainStyled } from './styles';
 
 function StoresMap () {
   const [stores, setStores] = useState<StoreProps[]>([]);
@@ -22,9 +23,10 @@ function StoresMap () {
     )
   }
   return (
-      <>
+      <MainStyled>
+        <H1Styled>Localização das lojas</H1Styled>
         <Map positions={stores} center={[-26.3008481, -48.8240764]}/>
-      </>
+      </MainStyled>
   )
   }
   
