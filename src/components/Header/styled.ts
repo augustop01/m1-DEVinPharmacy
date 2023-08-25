@@ -25,13 +25,16 @@ const StyledUl = styled.nav`
 `
 const StyledA = styled.a`
 box-sizing: border-box;
+background-color: rgb(63, 50, 156);
 text-decoration: none;
 display: flex;
 align-items: center;
 justify-content: center;
 pointer-events: none;
-width: 25%;
-&:last-of-type{
+width: 100%;
+&:hover{
+  background-color: rgba(255, 255, 255, 0.05);
+  transition: 0.2s;
 }
 `
 
@@ -54,7 +57,6 @@ box-sizing: border-box;
   pointer-events: all;
   &:hover {
     cursor: pointer;
-    scale: 1.05;
   }
 `
 const StyledImg = styled.span`
