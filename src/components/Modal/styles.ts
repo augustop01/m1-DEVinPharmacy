@@ -7,6 +7,7 @@ position: absolute;
 width: 100%;
 height: 140%;
 top: 0;
+z-index: 1000;
 `
 export const ModalOverlayDiv = styled.div`
   overflow: visible;

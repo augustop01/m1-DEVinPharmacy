@@ -98,9 +98,10 @@ export const ModalContainer = styled.section`
   align-items: center;
   height: 40rem;
   padding: 2rem;
-  position: relative;
+  position: absolute;
   transition: 0.5s;
   width: 35rem;
+  margin-top: 1rem;
   `;
 
 export const BtnClose = styled.button`
