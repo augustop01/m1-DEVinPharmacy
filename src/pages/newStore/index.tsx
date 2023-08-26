@@ -1,10 +1,10 @@
 import { useForm } from "react-hook-form";
-import { PageHr } from "./styles";
+import * as Styled from "./styles";
 import { StoreProps } from "./interfaces";
 import { api } from "../../services/api";
 
 function NewStore() {
-  const { register, handleSubmit, setValue, reset} = useForm();
+  const { register, handleSubmit, setValue} = useForm();
   let stores: object[] = []
 
   if(!localStorage.getItem("localizacao")) {
@@ -65,128 +65,129 @@ function NewStore() {
   }
 
   return (
-    <main>
-      <form onSubmit={handleSubmit(onSubmit)}>
-        <h3>Cadastro de farmácia</h3>
-        <p>Digite corretamente as informações de endereço da nova loja</p>
-        <PageHr />
-        <input
-          type="text"
-          {...register("about.corpName")}
-          alt="Digite a razão social da loja."
-          placeholder="Razão social"
-          required
-        />
-        <input
-          type="text"
-          {...register("about.cnpj")}
-          alt="Digite o CNPJ da loja."
-          placeholder="CNPJ (somente números)"
-          onBlur={CNPJ}
-          required
-        />
-        <input
-          type="text"
-          {...register("about.tradingName")}
-          alt="Digite o nome fantasia da loja."
-          placeholder="Nome Fantasia"
-          required
-        />
-        <input
-          type="email"
-          {...register("about.email")}
-          alt="Digite o e-mail de uso da loja."
-          placeholder="E-mail"
-          required
-        />
-        <input
-          type="text"
-          {...register("about.tel")}
-          alt="Opcional: Digite o número de telefone fixo da loja."
-          placeholder="Telefone (opcional)"
-          onBlur={Tel}
-        />
-        <input
-          type="text"
-          {...register("about.cel")}
-          alt="Digite o número de telefone celular da loja."
-          placeholder="Celular"
-          onBlur={Cel}
-          required
-        />
-        <fieldset>
-          <legend {...register("address")}>Endereço:</legend>
-          <input
+    <Styled.MainStyled>
+      <Styled.FormStyled onSubmit={handleSubmit(onSubmit)}>
+        <Styled.H1Styled>Cadastro de farmácia</Styled.H1Styled>
+        <Styled.PStyled>Digite corretamente as informações de endereço da nova loja</Styled.PStyled>
+        <Styled.InfoStyled>
+          <Styled.PForm>Dados da loja:</Styled.PForm>
+          <Styled.InputStyled
             type="text"
-            {...register("address.cep")} 
-            alt="Digite o CEP da loja."
-            placeholder="CEP (somente números)"
-            onBlur={GetCEP}
+            {...register("about.corpName")}
+            alt="Digite a razão social da loja."
+            placeholder="Razão social"
             required
           />
-          <input
+          <Styled.InputStyled
             type="text"
-            {...register("address.street")} 
-            alt="Digite o Logradouro/Endereço da loja."
-            placeholder="Logradouro/Endereço"
+            {...register("about.cnpj")}
+            alt="Digite o CNPJ da loja."
+            placeholder="CNPJ (somente números)"
+            onBlur={CNPJ}
             required
           />
-          <input
+          <Styled.InputStyled
             type="text"
-            {...register("address.num")} 
-            alt="Digite o número da loja."
-            placeholder="Número"
+            {...register("about.tradingName")}
+            alt="Digite o nome fantasia da loja."
+            placeholder="Nome Fantasia"
             required
           />
-          <input
-            type="text"
-            {...register("address.neighborhood")} 
-            alt="Digite o bairro em que se encontra a loja."
-            placeholder="Bairro"
+          <Styled.InputStyled
+            type="email"
+            {...register("about.email")}
+            alt="Digite o e-mail de uso da loja."
+            placeholder="E-mail"
             required
           />
-          <input
+          <Styled.InputStyled
             type="text"
-            {...register("address.city")} 
-            alt="Digite a cidade em que se encontra a loja."
-            placeholder="Cidade"
+            {...register("about.tel")}
+            alt="Opcional: Digite o número de telefone fixo da loja."
+            placeholder="Telefone (opcional)"
+            onBlur={Tel}
+          />
+          <Styled.InputStyled
+            type="text"
+            {...register("about.cel")}
+            alt="Digite o número de telefone celular da loja."
+            placeholder="Celular"
+            onBlur={Cel}
             required
           />
-          <input
-            type="text"
-            {...register("address.state")} 
-            alt="Digite o estado (unidade federal) em que se encontra a loja."
-            placeholder="Estado (UF)"
-            required
-          />
-          <input
-            type="text"
-            {...register("address.complement")} 
-            alt="Opcional: digite um complemento referente à loja."
-            placeholder="Complemento (opcional)"
-          />
-          <fieldset>
-            <legend>Geolocalização:</legend>
-            <input
+          
+          <Styled.AddressStyled>
+            <Styled.PAddress {...register("address")}>Dados do endereço:</Styled.PAddress>
+            <Styled.InputStyled
               type="text"
-              {...register("lat", {valueAsNumber: true})} 
-              alt="Digite a latitude referente à localização da loja."
-              placeholder="Latitude"
+              {...register("address.cep")} 
+              alt="Digite o CEP da loja."
+              placeholder="CEP (somente números)"
+              onBlur={GetCEP}
               required
             />
-            <input
+            <Styled.InputStyled
               type="text"
-              {...register("long", {valueAsNumber: true})} 
-              alt="Digite a longitude referente à localização da loja."
-              placeholder="Longitude"
+              {...register("address.street")} 
+              alt="Digite o Logradouro/Endereço da loja."
+              placeholder="Logradouro/Endereço"
               required
             />
-          </fieldset>
-        </fieldset>
-        <button type="submit"> Cadastrar </button>
-        <input type="button" onClick={() => reset()} value=" Limpar " style={{marginLeft: '2rem'}}/>
-      </form>
-    </main>
+            <Styled.InputStyled
+              type="text"
+              {...register("address.num")} 
+              alt="Digite o número da loja."
+              placeholder="Número"
+              required
+            />
+            <Styled.InputStyled
+              type="text"
+              {...register("address.neighborhood")} 
+              alt="Digite o bairro em que se encontra a loja."
+              placeholder="Bairro"
+              required
+            />
+            <Styled.InputStyled
+              type="text"
+              {...register("address.city")} 
+              alt="Digite a cidade em que se encontra a loja."
+              placeholder="Cidade"
+              required
+            />
+            <Styled.InputStyled
+              type="text"
+              {...register("address.state")} 
+              alt="Digite o estado (unidade federal) em que se encontra a loja."
+              placeholder="Estado (UF)"
+              required
+            />
+            <Styled.InputStyled
+              type="text"
+              {...register("address.complement")} 
+              alt="Opcional: digite um complemento referente à loja."
+              placeholder="Complemento (opcional)"
+            />
+            <Styled.GeolocStyled>
+            </Styled.GeolocStyled>
+              <Styled.GeolocInput
+                type="text"
+                {...register("lat", {valueAsNumber: true})} 
+                alt="Digite a latitude referente à localização da loja."
+                placeholder="Latitude"
+                required
+              />
+              <Styled.GeolocInput
+                type="text"
+                {...register("long", {valueAsNumber: true})} 
+                alt="Digite a longitude referente à localização da loja."
+                placeholder="Longitude"
+                required
+              />
+          </Styled.AddressStyled>
+        <Styled.ButtonStyled type="submit"> Cadastrar </Styled.ButtonStyled>
+        </Styled.InfoStyled>
+      </Styled.FormStyled>
+    </Styled.MainStyled>
   );
 }
 
