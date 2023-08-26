@@ -22,11 +22,11 @@ padding: 1rem 2rem;
 `
 
 export const H1Styled = styled.h1`
-color: #4841ac;
+color: #327884;
 `
 
 export const PStyled = styled.p`
-color: #4841ac;
+color: #419cac;
 font-weight: 500;
 `
 
@@ -132,15 +132,15 @@ z-index: 2;
 
 export const ButtonStyled = styled.button`
 font-weight: 700;
-color: blue;
+color: #1784ac;
 background-color: white;
-border: #3437bd 2px solid;
+border: #179dac 2px solid;
 height: 2.5rem;
 width: 15%;
 border-radius: 2rem;
 margin-top: 1.5rem;
 &:hover{
-  background-color: #3437bd;
+  background-color: #179dac;
   color: white;
   cursor: pointer;
 &:active{
