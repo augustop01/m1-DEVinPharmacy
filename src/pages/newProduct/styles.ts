@@ -25,7 +25,7 @@ padding: 4rem 2rem 1rem 2rem;
 
 export const H1Styled = styled.h1`
 position: absolute;
-color: #4841ac;
+color: #327884;
 width: fit-content;
 margin-bottom: 5rem;
 top: 0rem;
@@ -111,15 +111,15 @@ export const OptionStyled = styled.option`
 
 export const ButtonStyled = styled.button`
 font-weight: 700;
-color: blue;
+color: #1784ac;
 background-color: white;
-border: #393bd1 2px solid;
+border: #1784ac 2px solid;
 height: 2.5rem;
 width: 25%;
 border-radius: 2rem;
 margin: 1.5rem 0;
 &:hover{
-  background-color: #393bd1;
+  background-color: #1784ac;
   color: white;
   cursor: pointer;
 &:active{
