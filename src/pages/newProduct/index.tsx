@@ -31,11 +31,6 @@ function NewProduct() {
         onSubmit={handleSubmit(onSubmit)}
         > 
         <Styled.H1Styled>Cadastro de novo medicamento</Styled.H1Styled>
-        <Styled.SpanStyled>
-        <Styled.PStyled>
-          Informe os dados do medicamento a ser adicionado ao banco de dados
-        </Styled.PStyled>
-        </Styled.SpanStyled>
         <Styled.InfoStyled>
         <Styled.InputStyled
           type="text"
