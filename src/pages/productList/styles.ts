@@ -8,14 +8,14 @@ flex-direction: column;
 export const FilterSectStyled = styled.section`
 box-sizing: border-box;
 padding: .5rem 12rem;
-background-color: #E0E0E0;
+background-color: #eaeaea;
 display: flex;
 justify-content: space-between;
 align-items: center;
 `
 
 export const H2Styled = styled.h2`
-color: #8d92dd;
+color: #67a2ab;
 font-size: 2rem
 `
 

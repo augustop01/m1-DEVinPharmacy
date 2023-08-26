@@ -4,13 +4,13 @@ import { ProductProps } from "../../pages/newProduct/interfaces";
 //Card container
 
 export const PNameStyled = styled.p`
-color: #0900ad;
+color: #2e9cb2;
 margin-top: 0.5rem;
 font-weight: 800;
 `
 
 export const PDoseStyled = styled.p`
-color: #8a8a8a;
+color: #a7a7a7;
 font-size: 0.75rem;
 font-weight: 800;
 margin-top: -0.2rem;
@@ -29,7 +29,7 @@ export const SpanStyled = styled.span`
 export const PPriceStyled = styled.p`
   font-size: 1.25rem;
   font-weight: 800;
-  color: #ff7700;
+  color: #ff9d00;
   margin: 1rem;
   `
 
@@ -45,14 +45,14 @@ export const ButtonStyled = styled.button`
   padding: 0 1.5rem;
   margin: 1rem 2rem;
   border-radius: 1rem;
-  border: blue 1px solid;
+  border: #00909b 1px solid;
   background-color: white;
   height: fit-content;
     &:hover{
-      background-color: #F0F0F0;
+      background-color: #e4e9ea;
       cursor: pointer;
       ${PDoseStyled} {
-        color: #7470fd;
+        color: #77a5b9;
       }
       ${ImgStyled}{
         background-color: white;
@@ -139,7 +139,7 @@ export const BtnPrev = styled.button`
     scale: 1.5;
   }
   `
-  
+
 export const BtnNext = styled.button`
   color: #8f8e8e;
   background-color: #F0F0F0;
@@ -180,12 +180,13 @@ interface Props {
 }
 
 export const PNameModal = styled.p`
-color: #121ab1;
+color: #12b1b1;
 font-size: 2rem;
 font-weight: 700;
 `
+
 export const PDoseModal = styled.p`
-color: #6060a7;
+color: #749aa8;
 font-size: 1.1rem;
 font-weight: 600;
 margin-top: -.5rem;
@@ -208,16 +209,17 @@ color: #9e9e9e;
 
 export const PNatureModal = styled.p<Props>`
 margin-top: 1rem;
-color: ${props => props.isControlled ? '#ce3ce1' : '#7961ff'};
+color: ${props => props.isControlled ? '#9900ff' : '#98d4dc'};
 font-weight: 600;
 `
 
 export const PPriceModal = styled.p`
-color: #ff7300;
+color: #ffae00;
 font-size: 2rem;
 font-weight: 800;
 margin-top: 1.5rem;
 `
+
 export const PUnitModal = styled.p`
 margin-top: -0.5rem;
 font-weight: 600;
@@ -240,4 +242,5 @@ background-color: #f0f0f0;
 min-height: 10rem;
 width: 80%;
 `
+
 //Modal content
