@@ -24,7 +24,7 @@ function StoresMap () {
   }
   return (
       <MainStyled>
-        <H1Styled>Localização das lojas</H1Styled>
+        <H1Styled>FARMÁCIAS</H1Styled>
         <Map positions={stores} center={[-26.3008481, -48.8240764]}/>
       </MainStyled>
   )
