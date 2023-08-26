@@ -3,8 +3,8 @@ import {styled} from 'styled-components';
 const PageHeader = styled.header`
   position: relative;
   box-sizing: border-box;
-  background: rgb(63, 50, 156);
-  box-shadow: 1px 1px 10px rgba(0, 0, 255, 0.3);
+  background: rgb(65, 149, 155);
+  box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.3);
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -25,7 +25,7 @@ const StyledUl = styled.nav`
 `
 const StyledA = styled.a`
 box-sizing: border-box;
-background-color: rgb(63, 50, 156);
+background-color: rgb(65, 149, 155);
 text-decoration: none;
 display: flex;
 align-items: center;
