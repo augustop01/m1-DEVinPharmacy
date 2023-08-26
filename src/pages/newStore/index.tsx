@@ -68,7 +68,7 @@ function NewStore() {
     <Styled.MainStyled>
       <Styled.FormStyled onSubmit={handleSubmit(onSubmit)}>
         <Styled.H1Styled>Cadastro de farmácia</Styled.H1Styled>
-        <Styled.PStyled>Digite corretamente as informações de endereço da nova loja</Styled.PStyled>
+        <Styled.PStyled>Digite corretamente as informações e endereço da nova loja</Styled.PStyled>
         <Styled.InfoStyled>
           <Styled.PForm>Dados da loja:</Styled.PForm>
           <Styled.InputStyled

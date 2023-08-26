@@ -1,7 +1,7 @@
 import { styled } from "styled-components";
 
 export const MainStyled = styled.main`
-background-color: #b8b5ce;
+background-color: #ebebeb;
 overflow: hidden;
 display: flex;
 justify-content: center;
@@ -10,7 +10,7 @@ height: calc(100vh - 4rem);
 `
 
 export const FormStyled = styled.form`
-background-color: #7072d2;
+background-color: #ececec;
 border-radius: 1rem;
 box-sizing: border-box;
 padding: 1rem 0;
@@ -22,11 +22,11 @@ padding: 1rem 2rem;
 `
 
 export const H1Styled = styled.h1`
-color: #fefeff;
+color: #4841ac;
 `
 
 export const PStyled = styled.p`
-color: #fafafc;
+color: #4841ac;
 font-weight: 500;
 `
 
@@ -37,7 +37,7 @@ export const PageHr = styled.hr`
 export const InfoStyled = styled.span`
 position: relative;
 border-radius: 0.5rem;
-background-color: white;
+background-color: #ffffff;
 margin: 1rem 0;
 display: flex;
 flex-wrap: wrap;
@@ -59,22 +59,19 @@ left: 2rem;
 export const InputStyled = styled.input`
 border: none;
 text-align: center;
-border-bottom: #827cb1 2px solid;
-background-color: rgb(245, 245, 245);
-font-size: 1rem;
+border-bottom: #b1b1b1 2px solid;
+background-color: rgb(255, 255, 255);
+font-size: .9rem;
 padding: .5rem .5rem 0rem .5rem;
 margin: .5rem 0;
 height: 2.5rem;
 width: 15rem;
 &::placeholder {
-  color: #9e9ab6;
+  color: #a8a8a9;
 }
 &:focus{
   outline: none;
   background-color: rgb(235, 235, 235);
-}
-&:checked{
-  background-color: white;
 }
 `
 
@@ -102,7 +99,7 @@ left: 1rem;
 
 
 export const GeolocStyled = styled.span`
-position: absolute;
+/* position: absolute;
 background-color: rgba(0,0,0,0.1);
 box-sizing: border-box;
 display: flex;
@@ -113,14 +110,14 @@ bottom: 0.6rem;
 margin-left: .1rem;
 border-radius: 0.5rem;
 justify-content: space-between;
-z-index: 1;
+z-index: 1; */
 `
 
 export const GeolocInput = styled.input`
-border: none;
 border-radius: 0.25rem;
 text-align: center;
-border-bottom: #827cb1 2px solid;
+border: #b1b1b1 2px dashed;
+border-bottom: #b1b1b1 2px solid;
 background-color: rgb(255, 255, 255);
 font-size: 1rem;
 padding: .5rem .5rem 0rem .5rem;
@@ -129,7 +126,7 @@ height: 2.5rem;
 width: 15rem;
 z-index: 2;
 &::placeholder {
-  color: #827cb1;
+  color: #a8a8a9;
 }
 `
 
@@ -137,13 +134,13 @@ export const ButtonStyled = styled.button`
 font-weight: 700;
 color: blue;
 background-color: white;
-border: #7072d2 2px solid;
+border: #3437bd 2px solid;
 height: 2.5rem;
 width: 15%;
 border-radius: 2rem;
 margin-top: 1.5rem;
 &:hover{
-  background-color: #7072d2;
+  background-color: #3437bd;
   color: white;
   cursor: pointer;
 &:active{
