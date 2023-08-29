@@ -1,6 +1,6 @@
-import {createGlobalStyle} from 'styled-components'
+import {createGlobalStyle, styled} from 'styled-components'
 
-const GlobalStyle = createGlobalStyle`
+export const GlobalStyle = createGlobalStyle`
   *{
     box-sizing: border-box;
     margin: 0;
@@ -9,4 +9,11 @@ const GlobalStyle = createGlobalStyle`
   }
 `
 
-export {GlobalStyle};
+
+export const ThemeButton = styled.button`
+width: 3rem;
+height: 3rem;
+background-color: blue;
+border-radius: 50%;
+position: absolute;
+`
