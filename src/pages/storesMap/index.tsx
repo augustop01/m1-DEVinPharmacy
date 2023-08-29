@@ -1,7 +1,7 @@
 import { Map } from '../../components/Map';
 import {useState, useEffect} from "react"
 import { StoreProps } from '../newStore/interfaces';
-import { H1Styled, MainStyled } from './styles';
+import * as Styled from './styles';
 
 function StoresMap () {
   const [stores, setStores] = useState<StoreProps[]>([]);
@@ -16,17 +16,19 @@ function StoresMap () {
   
   if (stores.length == 0){
     return (
-      <>
-      <h1>Nenhuma loja foi registrada ainda.</h1>
-      <a style={{color: 'blue'}} href="/cadastro-farmacia">Clique aqui</a> para registrar uma loja.
-      </>
+      <Styled.NoStoreMain>
+        <Styled.NoStoreDiv>
+          <Styled.NoStoreH1>Não há lojas cadastradas</Styled.NoStoreH1>
+          <Styled.NoStoreP><Styled.NoStoreA href="/cadastro-farmacia">Clique aqui</Styled.NoStoreA> e cadastre uma nova farmácia</Styled.NoStoreP>
+        </Styled.NoStoreDiv>
+      </Styled.NoStoreMain>
     )
   }
   return (
-      <MainStyled>
-        <H1Styled>FARMÁCIAS</H1Styled>
+      <Styled.MainStyled>
+        <Styled.H1Styled>FARMÁCIAS</Styled.H1Styled>
         <Map positions={stores} center={[-26.3008481, -48.8240764]}/>
-      </MainStyled>
+      </Styled.MainStyled>
   )
   }
   

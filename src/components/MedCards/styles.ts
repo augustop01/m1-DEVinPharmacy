@@ -43,7 +43,7 @@ export const ButtonStyled = styled.button`
   align-items: center;
   box-sizing: border-box;
   padding: 0 1.5rem;
-  margin: 1rem 2rem;
+  margin: 1rem 0.25rem;
   border-radius: 1rem;
   border: #00909b 1px solid;
   background-color: white;
@@ -82,6 +82,7 @@ export const ModalBgDiv = styled.section`
   position: absolute;
   transition: 0.5s;
   top: -3rem;
+  left: 0;
   width: 100%;
 `;
 
@@ -209,7 +210,7 @@ color: #9e9e9e;
 
 export const PNatureModal = styled.p<Props>`
 margin-top: 1rem;
-color: ${props => props.isControlled ? '#9900ff' : '#98d4dc'};
+color: ${props => props.isControlled ? '#f25eff' : '#84c3cb'};
 font-weight: 600;
 `
 

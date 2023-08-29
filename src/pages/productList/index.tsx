@@ -1,15 +1,16 @@
 import {BaseSyntheticEvent, useEffect, useState} from "react"
-import { ProductProps } from "../newProduct/interfaces"
 import { MedCards } from "../../components/MedCards"
-import * as styled from "./styles"
+import * as Styled from "./styles"
 
 function ProductList() {
-  const response: ProductProps[] = JSON.parse(localStorage.getItem("products") || "");
+  const response = JSON.parse(localStorage.getItem("products") || "[]");
   const products = response;
+  const originalList = products; 
   const [typeFilter, setTypeFilter] = useState("no-filter");
   const [nameFilter, setNameFilter] = useState("");
   const [medList, setMedList] = useState(products)
-
+  console.log(products);
+  
   useEffect(() => {
   const name = nameFilter;
   const type = typeFilter;
@@ -40,10 +41,12 @@ function ProductList() {
   
 if(products.length === 0) {
   return(
-    <main>
-      <h1>Não existem medicamentos cadastrados.</h1>
-      <p><a href="/cadastro-medicamento">{`Clique aqui `}</a>para registrar um novo medicamento.</p>
-    </main>
+    <Styled.NoProductMain>
+      <Styled.NoProductDiv>
+      <Styled.NoProductH1>Não há medicamentos cadastrados</Styled.NoProductH1>
+      <Styled.NoProductP><Styled.NoProductA href="/cadastro-medicamento">Clique aqui</Styled.NoProductA>e cadastre um novo medicamento</Styled.NoProductP>
+      </Styled.NoProductDiv>
+    </Styled.NoProductMain>
   )
 }
 
@@ -55,33 +58,33 @@ if(products.length === 0) {
     setNameFilter(event.target.value)}
 
   return(
-    <styled.MainStyled>
-      <styled.FilterSectStyled>
-      <styled.H2Styled>Medicamentos registrados</styled.H2Styled>
-        <styled.FormStyled>
-          <styled.SelectStyled onChange={filterType}>
-            <styled.OptionStyled value=".0" hidden>
+    <Styled.MainStyled>
+      <Styled.FilterSectStyled>
+      <Styled.H2Styled>Medicamentos registrados</Styled.H2Styled>
+        <Styled.FormStyled>
+          <Styled.SelectStyled onChange={filterType}>
+            <Styled.OptionStyled value=".0" hidden>
               Forma de exibição
-            </styled.OptionStyled>
-            <styled.OptionStyled value="no-filter">Todos</styled.OptionStyled>
-            <styled.OptionStyled value="false">Somente comuns</styled.OptionStyled>
-            <styled.OptionStyled value="true">Somente controlados</styled.OptionStyled>
-            <styled.OptionStyled value="alpha">Ordem Alfabética</styled.OptionStyled>
-            <styled.OptionStyled value="rise">Preço crescente</styled.OptionStyled>
-            <styled.OptionStyled value="desc">Preço decrescente</styled.OptionStyled>
-          </styled.SelectStyled>
-          <styled.InputStyled 
+            </Styled.OptionStyled>
+            <Styled.OptionStyled value="no-filter">Todos</Styled.OptionStyled>
+            <Styled.OptionStyled value="false">Somente comuns</Styled.OptionStyled>
+            <Styled.OptionStyled value="true">Somente controlados</Styled.OptionStyled>
+            <Styled.OptionStyled value="alpha">Ordem Alfabética</Styled.OptionStyled>
+            <Styled.OptionStyled value="rise">Preço crescente</Styled.OptionStyled>
+            <Styled.OptionStyled value="desc">Preço decrescente</Styled.OptionStyled>
+          </Styled.SelectStyled>
+          <Styled.InputStyled 
           type="text" 
           alt="Pesquise medicamentos pelo nome"
           placeholder="Pesquise medicamentos pelo nome"
           onChange={filterName}
           />
-        </styled.FormStyled>
-      </styled.FilterSectStyled>
-      <styled.CardsSectStyled>
-        <MedCards meds={medList}/>
-      </styled.CardsSectStyled>
-    </styled.MainStyled>
+        </Styled.FormStyled>
+      </Styled.FilterSectStyled>
+      <Styled.CardsSectStyled>
+        <MedCards meds={medList} original={originalList}/>
+      </Styled.CardsSectStyled>
+    </Styled.MainStyled>
   )
 }
 

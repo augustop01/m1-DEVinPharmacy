@@ -1,10 +1,13 @@
 import { useForm } from "react-hook-form";
 import * as Styled from "./styles";
+import {useState, useEffect} from 'react'
 import { StoreProps } from "./interfaces";
 import { api } from "../../services/api";
 
 function NewStore() {
   const { register, handleSubmit, setValue} = useForm();
+  const [pharmRegister, setPharmRegister] = useState(false);
+
   let stores: object[] = []
 
   if(!localStorage.getItem("localizacao")) {
@@ -16,9 +19,23 @@ function NewStore() {
   }
 
   function onSubmit(data: StoreProps) {
+    try{
     stores = [...stores, data]
     localStorage.setItem("localizacao", JSON.stringify(stores))
+    setPharmRegister(true);
+    }
+    catch(error){
+      console.log(error)
+    }
   }
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setPharmRegister(false)
+    }, 3000)
+
+    return () => clearTimeout(timer);
+  }, [pharmRegister])
 
   function CNPJ (e: React.FormEvent<HTMLInputElement>){
     const cnpj = e.currentTarget.value.replace(/\D/g, '')
@@ -185,6 +202,7 @@ function NewStore() {
               />
           </Styled.AddressStyled>
         <Styled.ButtonStyled type="submit"> Cadastrar </Styled.ButtonStyled>
+        {pharmRegister && <Styled.PharmRegister>Nova farmácia cadastrada com sucesso.</Styled.PharmRegister>}
         </Styled.InfoStyled>
       </Styled.FormStyled>
     </Styled.MainStyled>

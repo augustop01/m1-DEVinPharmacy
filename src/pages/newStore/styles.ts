@@ -1,7 +1,7 @@
 import { styled } from "styled-components";
 
 export const MainStyled = styled.main`
-background-color: #ebebeb;
+background-color: #e6e6e6;
 overflow: hidden;
 display: flex;
 justify-content: center;
@@ -10,7 +10,7 @@ height: calc(100vh - 4rem);
 `
 
 export const FormStyled = styled.form`
-background-color: #ececec;
+background-color: #e6e6e6;
 border-radius: 1rem;
 box-sizing: border-box;
 padding: 1rem 0;
@@ -128,6 +128,10 @@ z-index: 2;
 &::placeholder {
   color: #a8a8a9;
 }
+&:focus{
+  outline: none;
+  background-color: rgb(235, 235, 235);
+}
 `
 
 export const ButtonStyled = styled.button`
@@ -147,4 +151,18 @@ margin-top: 1.5rem;
   scale: 0.95
 }
 }
+`
+
+export const PharmRegister = styled.p`
+display: flex;
+align-items: center;
+position: absolute;
+width: 40%;
+height: 10rem;
+border-radius: 2rem;
+font-size: 1.25rem;
+text-align: center;
+background-color: rgba(255, 255, 255, 0.9);
+color: #00c200;
+font-weight: 500;
 `

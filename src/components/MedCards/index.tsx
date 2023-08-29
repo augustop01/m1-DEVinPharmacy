@@ -5,7 +5,7 @@ import * as Styled from './styles'
 import { useModal } from "../../hooks/useModal";
 import { ProductProps } from "../../pages/newProduct/interfaces";
 
-function MedCards({meds}: MedProps) {
+function MedCards({meds, original}: MedProps) {
   const {isOpen, toggle} = useModal();
   const [isClicked, setIsClicked] = useState<ProductProps>();
 
@@ -17,19 +17,68 @@ function MedCards({meds}: MedProps) {
   function changeContent(order: string | undefined) {
     const id = Number(isClicked?.id)
     if(meds!.length > 1){
-      if(order === "next" && id < meds!.length) {
-        const newId = String(id + 1)
-        return setIsClicked(meds!.find(x => x.id === newId))
+      if(order === "next" && id < original.length) {
+        let newId = id + 1;
+        let newList = meds!.find(x => x.id === String(newId))
+        if (!newList) {
+          while(newList == undefined && newId < original.length){
+            newId++
+            newList = meds!.find(x => x.id === String(newId))
+          }
+          while(newList === undefined && newId === original.length){
+            newId = 1;
+            newList = meds!.find(x => x.id === String(newId))
+          }
+          while(newList === undefined){
+            newId++
+            newList = meds!.find(x => x.id === String(newId))
+          }
+          return setIsClicked(newList)
+        }
+        return setIsClicked(newList)
       }
-      if(order === "next" && id == meds?.length){
-        return setIsClicked(meds!.find(x => x.id === '1'))
+      if(order === "next" && id == original?.length){
+        let newId = 1;
+        let newList = meds!.find(x => x.id === String(newId))
+        if (!newList) {
+          while(newList == null || newList == undefined){
+            newId++
+            newList = meds!.find(x => x.id === String(newId))
+          }
+        }
+        return setIsClicked(newList)
       }
       if(order === "prev" && id > 1){
-      const newId = String(id - 1)
-      return setIsClicked(meds!.find(x => x.id === newId))
+        let newId = id - 1;
+        let newList = meds!.find(x => x.id === String(newId))
+        if (!newList) {
+          while(newList == undefined && newId > 1){
+            newId--
+            newList = meds!.find(x => x.id === String(newId))
+          }
+          while(newList == undefined && newId === 1){
+            newId = original.length;
+            newList = meds!.find(x => x.id === String(newId))
+          }
+          while(newList == undefined){
+            newId--
+            newList = meds!.find(x => x.id === String(newId))
+          }
+          return setIsClicked(newList)
+        }
+        return setIsClicked(newList)
       }
       if(order === "prev" && id == 1){
-        return setIsClicked(meds!.find(x => x.id == meds?.length))
+        let newId = original.length;
+        let newList = meds!.find(x => x.id === String(newId));
+        if (!newList) {
+          while(newList === null || newList === undefined){
+            newId--
+            newList = meds!.find(x => x.id === String(newId))
+          }
+          return setIsClicked(newList)
+        }
+        return setIsClicked(newList)
       }
     }
   }

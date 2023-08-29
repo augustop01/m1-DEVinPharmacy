@@ -1,9 +1,11 @@
 import { useForm } from "react-hook-form";
 import { ProductProps } from "./interfaces";
 import * as Styled from './styles'
+import {useEffect, useState} from 'react';
 
 function NewProduct() {
-  const { register, handleSubmit} = useForm();
+  const { register, handleSubmit, setValue} = useForm();
+  const [medRegister, setMedRegister] = useState(false);
   let products: ProductProps[] = [];
 
   if(localStorage.getItem("products")){
@@ -11,6 +13,11 @@ function NewProduct() {
   }
 
   function onSubmit(data: ProductProps) {
+    if(data.isControlled === '0'){
+      alert('Selecione o tipo do medicamento.')
+      return
+    }
+    try{
     if(!localStorage.getItem("products")){
       products = [];
     }
@@ -23,7 +30,37 @@ function NewProduct() {
     const i = products.length-1;
     products[i] = {...products[i], id: `${products.length}` || undefined}
     localStorage.setItem("products", JSON.stringify(products))
+    setMedRegister(true);
+  } catch(error){
+    console.log(error);
   }
+  }
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setMedRegister(false)
+    }, 3000)
+
+    return () => clearTimeout(timer);
+  }, [medRegister])
+
+  function select(e: React.FormEvent<HTMLInputElement>){
+    e.currentTarget.select();
+  }
+
+  function brReal(e: React.FormEvent<HTMLInputElement>){
+    const value = e.currentTarget.value.replace(/(\D)/g, '');
+    const price = Number(value);
+    setValue('price', value);
+    if(price > 0 && price < 100){
+      const newValue = value.replace(/(\d{1,2})/, '$1.00')
+      return setValue('price', newValue)
+    }
+    if(price > 99){
+      const newValue = value.replace(/(\d+)(\d{2})/, '$1.$2')
+      return setValue('price', newValue)
+    }
+}
 
   return (
     <Styled.MainStyled>
@@ -59,21 +96,25 @@ function NewProduct() {
           rows= {10}
           placeholder="Descrição do medicamenjto (opcional)"
         />
-        <Styled.InputStyled
+        <Styled.InputPriceStyled
           type="text"
           {...register("price")}
+          onBlur={brReal}
+          onFocus={select}
           alt="Digite o preço unitário do medicamento"
-          placeholder="(R$) Preço unitário"
+          placeholder="Preço unitário" 
+          title="Digite o preço unitário do medicamento"
           required
         />
-        <Styled.SelectStyled>
-          <Styled.OptionStyled value=".0" hidden>
+        <Styled.SelectStyled {...register("isControlled")}>
+          <Styled.OptionStyled value="0" hidden >
             Selecione o tipo do medicamento
           </Styled.OptionStyled>
           <Styled.OptionStyled value="false">Medicamento comum</Styled.OptionStyled>
           <Styled.OptionStyled value="true">Medicamento controlado</Styled.OptionStyled>
         </Styled.SelectStyled>
         <Styled.ButtonStyled type="submit"> Cadastrar </Styled.ButtonStyled>
+        {medRegister && <Styled.MedRegister>Novo medicamento foi cadastrado com sucesso.</Styled.MedRegister>}
         </Styled.InfoStyled>
       </Styled.FormStyled>
     </Styled.MainStyled>
