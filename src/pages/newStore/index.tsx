@@ -184,8 +184,6 @@ function NewStore() {
               alt="Opcional: digite um complemento referente à loja."
               placeholder="Complemento (opcional)"
             />
-            <Styled.GeolocStyled>
-            </Styled.GeolocStyled>
               <Styled.GeolocInput
                 type="text"
                 {...register("lat", {valueAsNumber: true})} 

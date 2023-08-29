@@ -6,7 +6,8 @@ overflow: hidden;
 display: flex;
 justify-content: center;
 align-items: center;
-height: calc(100vh - 4rem);
+min-height: calc(100vh - 4rem);
+max-height: fit-content;
 `
 
 export const FormStyled = styled.form`
@@ -17,7 +18,6 @@ padding: 1rem 0;
 display: flex;
 flex-direction: column;
 width: 60%;
-height: 650px;
 padding: 1rem 2rem;
 `
 
@@ -87,30 +87,16 @@ flex-wrap: wrap;
 border-radius: 0.5rem;
 margin: 0.5rem 1rem 0 1rem;
 padding: 1.5rem 0.5rem 0.5rem 0.5rem;
-height: 60%;
-`
+min-height: 250px;
+${InputStyled}{
+  margin-top: 1.25rem;
+}`
 
 export const PAddress = styled.p`
 color: #858585;
 position: absolute;
 top: 0.25rem;
 left: 1rem;
-`
-
-
-export const GeolocStyled = styled.span`
-/* position: absolute;
-background-color: rgba(0,0,0,0.1);
-box-sizing: border-box;
-display: flex;
-width: 32rem;
-height: 5rem;
-right: 0.7rem;
-bottom: 0.6rem;
-margin-left: .1rem;
-border-radius: 0.5rem;
-justify-content: space-between;
-z-index: 1; */
 `
 
 export const GeolocInput = styled.input`
@@ -124,6 +110,7 @@ padding: .5rem .5rem 0rem .5rem;
 margin: .5rem 0;
 height: 2.5rem;
 width: 15rem;
+margin-top: 1.25rem;
 z-index: 2;
 &::placeholder {
   color: #a8a8a9;
@@ -139,8 +126,8 @@ font-weight: 700;
 color: #1784ac;
 background-color: white;
 border: #179dac 2px solid;
-height: 2.5rem;
-width: 15%;
+height: 2.25rem;
+width: 5.5rem;
 border-radius: 2rem;
 margin-top: 1.5rem;
 &:hover{
