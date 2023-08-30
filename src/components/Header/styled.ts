@@ -111,7 +111,6 @@ height: 2.5rem;
 border-radius: 50%;
 position: absolute;
 left: 0.3rem;
-z-index: 1000;
 &:hover{
   cursor: pointer;
   scale: 1.1;

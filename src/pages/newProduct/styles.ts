@@ -3,7 +3,7 @@ import { styled } from "styled-components";
 
 export const FormStyled = styled.form`
 position: relative;
-background-color: #e6e6e6;
+background-color: transparent;
 border-radius: 1rem;
 box-sizing: border-box;
 display: flex;
@@ -121,15 +121,17 @@ margin: 1.5rem 0;
 export const MedRegister = styled.p`
 position: absolute;
 width: 90%;
+backdrop-filter: blur(5px);
 border-radius: 1rem;
 font-size: 1.25rem;
 text-align: center;
-background-color: rgba(230, 230, 230, 0.5);
+background-color: rgba(216, 216, 216, 0.4);
 color: #00c200;
 font-weight: 500;
 `
 
 const lightMode = css`
+transition: 0.25s;
 background-color: #e6e6e6;
 overflow: hidden;
 display: flex;
@@ -140,6 +142,7 @@ max-height: fit-content;
 `
 
 const darkMode = css`
+transition: 0.25s;
 background-color: #0d1e1e;
 overflow: hidden;
 display: flex;
@@ -196,6 +199,9 @@ ${ButtonStyled}{
     border-color: #61c5ff;
     color: #0c2023;
   }
+}
+${MedRegister}{
+  background-color: rgba(103, 136, 140, 0.486);
 }
 `
 

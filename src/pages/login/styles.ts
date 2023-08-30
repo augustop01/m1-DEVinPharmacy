@@ -62,8 +62,8 @@ margin-top: 1rem;
   scale: 0.9
 }
 `
-
 const lightMode = css`
+transition: 0.25s;
 display: flex;
 flex-direction: column;
 justify-content: center;
@@ -74,6 +74,7 @@ background-color: #eaeaea;
 `
 
 const darkMode = css`
+transition: 0.25s;
 display: flex;
 flex-direction: column;
 justify-content: center;

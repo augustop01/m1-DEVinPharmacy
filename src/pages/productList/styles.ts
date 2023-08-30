@@ -46,6 +46,7 @@ width: fit-content;
 `
 
 const empLightMode = css`
+transition: 0.25s;
 display: flex;
 flex-direction: column;
 align-items: center;
@@ -55,6 +56,7 @@ height: calc(100vh - 4rem);
 `
 
 const empDarkMode = css`
+transition: 0.25s;
 display: flex;
 flex-direction: column;
 align-items: center;
@@ -149,6 +151,7 @@ margin-bottom: 1rem;
 `
 
 const lightMode = css`
+transition: 0.25s;
 display: flex;
 flex-direction: column;
 align-items: center;
@@ -158,6 +161,7 @@ max-height: fit-content;
 `
 
 const darkMode = css`
+transition: 0.25s;
 background-color: #0d1e1e;
 display: flex;
 flex-direction: column;

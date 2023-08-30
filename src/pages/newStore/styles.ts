@@ -2,7 +2,7 @@ import { styled } from "styled-components";
 import { css } from "styled-components";
 
 export const FormStyled = styled.form`
-background-color: #e6e6e6;
+background-color: transparent;
 border-radius: 1rem;
 box-sizing: border-box;
 padding: 1rem 0;
@@ -114,6 +114,7 @@ margin-top: 1.5rem;
 
 export const PharmRegister = styled.p`
 display: flex;
+backdrop-filter: blur(5px);
 align-items: center;
 position: absolute;
 width: 40%;
@@ -121,13 +122,14 @@ height: 10rem;
 border-radius: 2rem;
 font-size: 1.25rem;
 text-align: center;
-background-color: rgba(255, 255, 255, 0.9);
+background-color: rgba(216, 216, 216, 0.4);
 color: #00c200;
 font-weight: 500;
 `
 
 
 const lightMode = css`
+transition: 0.25s;
 background-color: #e6e6e6;
 overflow: hidden;
 display: flex;
@@ -138,6 +140,7 @@ max-height: fit-content;
 `
 
 const darkMode = css`
+transition: 0.25s;
 background-color: #0d1e1e;
 overflow: hidden;
 display: flex;
@@ -184,6 +187,9 @@ ${ButtonStyled}{
     border-color: #61c5ff;
     color: #0c2023;
   }
+}
+${PharmRegister}{
+  background-color: rgba(103, 136, 140, 0.486);
 }
 `
 

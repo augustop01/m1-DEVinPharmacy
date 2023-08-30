@@ -43,6 +43,7 @@ width: fit-content;
 `
 
 const lightMode = css`
+transition: 0.25s;
 display: flex;
 flex-direction: column;
 align-items: center;
@@ -52,6 +53,7 @@ height: calc(100vh - 4rem);
 `
 
 const darkMode = css`
+transition: 0.25s;
 display: flex;
 flex-direction: column;
 align-items: center;
