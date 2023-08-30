@@ -1,5 +1,6 @@
 import styled,{ keyframes} from "styled-components";
 import { ProductProps } from "../../pages/newProduct/interfaces";
+import { css } from "styled-components";
 
 //Card container
 
@@ -37,15 +38,18 @@ export const ButtonStyled = styled.button`
   margin-bottom: 0.5rem;
   `
 
-  export const DivContainerStyled = styled.div`
-  display: flex;
+
+
+
+const lightMode = css`
+display: flex;
   flex-direction: column;
   align-items: center;
   box-sizing: border-box;
   padding: 0 1.5rem;
   margin: 1rem 0.25rem;
   border-radius: 1rem;
-  border: #00909b 1px solid;
+  border: #00909b 2px solid;
   background-color: white;
   height: fit-content;
     &:hover{
@@ -58,10 +62,48 @@ export const ButtonStyled = styled.button`
         background-color: white;
       }
     }
-  `
+`
 
+const darkMode = css`
+display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-sizing: border-box;
+  padding: 0 1.5rem;
+  margin: 1rem 0.25rem;
+  border-radius: 1rem;
+  border: #5a8194 2px solid;
+  background-color: #1d3235;
+  height: fit-content;
+  ${PNameStyled}{
+    color: #95c3c6;
+  }
+  ${PDoseStyled}{
+    color: #698587;
+  }
+  ${ImgStyled}{
+    background-color: rgba(85, 193, 255, 0.05);
+  }
+  ${PPriceStyled}{
+    color: #ff9900;
+  }
+    &:hover{
+      background-color: #284245;
+      cursor: pointer;
+      ${PDoseStyled} {
+        color: #ffffff;
+      }
+      ${ImgStyled}{
+        background-color: rgba(85, 193, 255,0.1);
+      }
+    }
+`
 
+export const DivContainerStyled = styled.div<{pagetheme: string}>`
+${(props) => props.pagetheme === 'light' && lightMode}
+${(props) => props.pagetheme === 'dark' && darkMode}
 
+`
 
 //---------- MedCards Modal tags
 // Modal container
@@ -73,6 +115,7 @@ const growAnimation = keyframes`
   0% {scale: 25%}
   100% {scale: 100%}
 `;
+
 export const ModalBgDiv = styled.section`
   animation-duration: 0.25s;
   animation-name: ${fadeAnimation};
@@ -84,24 +127,7 @@ export const ModalBgDiv = styled.section`
   top: -3rem;
   left: 0;
   width: 100%;
-`;
-
-export const ModalContainer = styled.section`
-  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
-  animation-name: ${growAnimation};
-  animation-duration: 0.25s;
-  background-color: #fafafa;
-  border-radius: 1rem;
-  box-sizing: border-box;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 40rem;
-  position: absolute;
-  transition: 0.5s;
-  width: 35rem;
-  margin-top: .75rem;
-  `;
+`
 
 export const BtnClose = styled.button`
   background-color: transparent;
@@ -141,22 +167,11 @@ export const BtnPrev = styled.button`
   }
   `
 
-export const BtnNext = styled.button`
-  color: #8f8e8e;
-  background-color: #F0F0F0;
-  border: none;
+export const BtnNext = styled(BtnPrev)`
+  margin-left: 0;
   margin-right: 1rem;
-  border-radius: 0.25rem;
-  width: 1.5rem;
-  height: fit-content;
+  left: auto;
   right: 2%;
-  scale: 1.5;
-  &:hover{
-    scale: 1.75;
-  }
-  &:active{
-    scale: 1.5;
-  }
   `
 
 export const ModalStyle = styled.div`
@@ -245,3 +260,63 @@ width: 80%;
 `
 
 //Modal content
+
+const modalLightMode = css`
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+  animation-name: ${growAnimation};
+  animation-duration: 0.25s;
+  background-color: #fafafa;
+  border-radius: 1rem;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 40rem;
+  position: absolute;
+  transition: 0.5s;
+  width: 35rem;
+  margin-top: .75rem;
+`
+
+const modalDarkMode = css`
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+  animation-name: ${growAnimation};
+  animation-duration: 0.25s;
+  background-color: #233f43;
+  border-radius: 1rem;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 40rem;
+  position: absolute;
+  transition: 0.5s;
+  width: 35rem;
+  margin-top: .75rem;
+  ${PNameModal}{
+    color: #89deea;
+  }
+  ${ImgModal}{
+    background-color: rgba(255,255,255,0.05);
+  }
+  ${PLabModal}{
+    color: #bcbbbb;
+  }
+  ${PInfoModal}{
+    background-color: rgba(0,0,0,0.15);
+    color: #bccfd1;
+  }
+  ${BtnPrev}{
+    background-color: rgba(149, 226, 245, 0.2);
+    color: #233f43;
+  }
+  ${BtnClose}{
+    color: rgba(149, 226, 245, 0.3);
+  }
+`
+
+export const ModalContainer = styled.section<{pagetheme: string}>`
+${(props) => props.pagetheme === 'light' && modalLightMode}
+${(props) => props.pagetheme === 'dark' && modalDarkMode}
+
+`

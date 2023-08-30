@@ -1,13 +1,15 @@
 import { MedProps } from "./interfaces"
-import { useState } from "react"
+import { useState} from "react"
 import { Modal } from "../Modal";
 import * as Styled from './styles'
 import { useModal } from "../../hooks/useModal";
 import { ProductProps } from "../../pages/newProduct/interfaces";
+import { useApp } from '../../hooks/useApp';
 
 function MedCards({meds, original}: MedProps) {
   const {isOpen, toggle} = useModal();
   const [isClicked, setIsClicked] = useState<ProductProps>();
+  const {theme} = useApp();
 
   function setModal(id: string | undefined) {
     setIsClicked(meds!.find(x => x.id === id))
@@ -88,7 +90,7 @@ function MedCards({meds, original}: MedProps) {
       {
         meds!.map((med, index) => {
           return(
-            <Styled.DivContainerStyled key={index} id={med.id}  onClick={function() {setModal(med.id)}}>
+            <Styled.DivContainerStyled key={index} id={med.id} pagetheme={theme} onClick={function() {setModal(med.id)}}>
                 <Styled.PNameStyled>{med.name}</Styled.PNameStyled>
                 <Styled.PDoseStyled>{med.dose}</Styled.PDoseStyled>
                 <Styled.ImgStyled src={(med.isControlled === 'true') ? "img/med-controlado2.png" : "img/med-comum2.png"} alt={(med.isControlled === 'true') ? "Ilustração de medicamento controlado" : "lustração de medicamento comum"} width={150}/>
@@ -103,7 +105,7 @@ function MedCards({meds, original}: MedProps) {
       }
       <Modal isOpen={isOpen} toggle={toggle}>
         <Styled.ModalBgDiv onClick={toggle}/>
-        <Styled.ModalContainer>  
+        <Styled.ModalContainer pagetheme={theme}>  
           <Styled.BtnClose onClick={toggle}>x</Styled.BtnClose>
           <Styled.BtnPrev onClick={function(){changeContent("prev")}}>{`<<`}</Styled.BtnPrev>
           <Styled.ModalStyle>

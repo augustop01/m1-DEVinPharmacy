@@ -1,23 +1,30 @@
-import {PageHeader, StyledA, StyledLi, StyledUl} from './styled'
+import * as Styled from './styled'
+import { useApp } from '../../hooks/useApp';
+
 
 function Header() {
+  const {theme, toggleTheme} = useApp();
+
+  console.log(theme);
+
   return(
-    <PageHeader>
-      <StyledUl>
-        <StyledA href='/'>
-          <StyledLi>FARMÁCIAS</StyledLi>
-        </StyledA>
-        <StyledA href='/medicamentos'>
-          <StyledLi>Medicamentos</StyledLi>
-        </StyledA>
-        <StyledA href='/cadastro-farmacia'>
-          <StyledLi>Nova Farmácia</StyledLi>
-        </StyledA>
-        <StyledA href='/cadastro-medicamento'>
-          <StyledLi>Novo Medicamento</StyledLi>
-        </StyledA>
-      </StyledUl>
-    </PageHeader>
+    <Styled.PageHeader  pagetheme={theme}>
+      <Styled.ThemeButton onClick={toggleTheme} pagetheme={theme}/>
+      <Styled.StyledUl>
+        <Styled.StyledA href='/'>
+          <Styled.StyledLi>FARMÁCIAS</Styled.StyledLi>
+        </Styled.StyledA>
+        <Styled.StyledA href='/medicamentos'>
+          <Styled.StyledLi>Medicamentos</Styled.StyledLi>
+        </Styled.StyledA>
+        <Styled.StyledA href='/cadastro-farmacia'>
+          <Styled.StyledLi>Nova Farmácia</Styled.StyledLi>
+        </Styled.StyledA>
+        <Styled.StyledA href='/cadastro-medicamento'>
+          <Styled.StyledLi>Novo Medicamento</Styled.StyledLi>
+        </Styled.StyledA>
+      </Styled.StyledUl>
+    </Styled.PageHeader>
   )
 }
 

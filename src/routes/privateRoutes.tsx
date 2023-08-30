@@ -4,8 +4,8 @@ import { StoresMap } from "../pages/storesMap";
 import { NewProduct } from "../pages/newProduct";
 import { ProductList } from "../pages/productList";
 
-
 function PrivateRoutes() {
+
   return(
     <Routes>
       <Route path="/" element={<StoresMap/>}/>

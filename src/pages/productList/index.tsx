@@ -1,6 +1,7 @@
 import {BaseSyntheticEvent, useEffect, useState} from "react"
 import { MedCards } from "../../components/MedCards"
 import * as Styled from "./styles"
+import { useApp } from '../../hooks/useApp';
 
 function ProductList() {
   const response = JSON.parse(localStorage.getItem("products") || "[]");
@@ -9,8 +10,8 @@ function ProductList() {
   const [typeFilter, setTypeFilter] = useState("no-filter");
   const [nameFilter, setNameFilter] = useState("");
   const [medList, setMedList] = useState(products)
-  console.log(products);
-  
+  const {theme} = useApp();
+
   useEffect(() => {
   const name = nameFilter;
   const type = typeFilter;
@@ -41,7 +42,7 @@ function ProductList() {
   
 if(products.length === 0) {
   return(
-    <Styled.NoProductMain>
+    <Styled.NoProductMain pagetheme={theme}>
       <Styled.NoProductDiv>
       <Styled.NoProductH1>Não há medicamentos cadastrados</Styled.NoProductH1>
       <Styled.NoProductP><Styled.NoProductA href="/cadastro-medicamento">Clique aqui</Styled.NoProductA>e cadastre um novo medicamento</Styled.NoProductP>
@@ -58,7 +59,7 @@ if(products.length === 0) {
     setNameFilter(event.target.value)}
 
   return(
-    <Styled.MainStyled>
+    <Styled.MainStyled pagetheme={theme}>
       <Styled.FilterSectStyled>
       <Styled.H2Styled>Medicamentos registrados</Styled.H2Styled>
         <Styled.FormStyled>

@@ -3,11 +3,13 @@ import * as Styled from "./styles";
 import {useState, useEffect} from 'react'
 import { StoreProps } from "./interfaces";
 import { api } from "../../services/api";
+import { useApp } from '../../hooks/useApp';
 
 function NewStore() {
   const { register, handleSubmit, setValue} = useForm();
   const [pharmRegister, setPharmRegister] = useState(false);
-
+  const {theme} = useApp();
+  
   let stores: object[] = []
 
   if(!localStorage.getItem("localizacao")) {
@@ -82,7 +84,7 @@ function NewStore() {
   }
 
   return (
-    <Styled.MainStyled>
+    <Styled.MainStyled pagetheme={theme}>
       <Styled.FormStyled onSubmit={handleSubmit(onSubmit)}>
         <Styled.H1Styled>Cadastro de farmácia</Styled.H1Styled>
         <Styled.PStyled>Digite corretamente as informações e endereço da nova loja</Styled.PStyled>

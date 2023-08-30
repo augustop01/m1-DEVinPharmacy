@@ -2,10 +2,12 @@ import { useForm } from "react-hook-form";
 import { ProductProps } from "./interfaces";
 import * as Styled from './styles'
 import {useEffect, useState} from 'react';
+import { useApp } from '../../hooks/useApp';
 
 function NewProduct() {
   const { register, handleSubmit, setValue} = useForm();
   const [medRegister, setMedRegister] = useState(false);
+  const {theme} = useApp();
   let products: ProductProps[] = [];
 
   if(localStorage.getItem("products")){
@@ -63,7 +65,7 @@ function NewProduct() {
 }
 
   return (
-    <Styled.MainStyled>
+    <Styled.MainStyled pagetheme={theme}>
       <Styled.FormStyled
         onSubmit={handleSubmit(onSubmit)}
         > 

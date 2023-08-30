@@ -2,7 +2,9 @@ import { TileLayer } from 'react-leaflet';
 import { MapProps } from './interfaces';
 import {MapContainerStyled, MarkerStyled, PopupStyled} from './styles'
 
+
 function Map({positions, center}: MapProps) {
+
     return (
       <MapContainerStyled center={center} zoom={13}>
         <TileLayer

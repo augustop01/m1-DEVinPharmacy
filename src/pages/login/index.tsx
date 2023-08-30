@@ -4,9 +4,9 @@ import { LoginProps } from "./interfaces";
 import * as Styled from './styles'
 
 function Login() {
-
-const {register, handleSubmit} = useForm();
-const {setValue} = useApp();
+  const {register, handleSubmit} = useForm();
+  const {setValue} = useApp();
+  const {theme} = useApp();
 
 function emailRegex(input: string) {
   const regex = new RegExp(/^[a-z0-9.]+@[a-z0-9]+\.[a-z]+\.?([a-z]+)?$/i) 
@@ -36,7 +36,7 @@ alert("O e-mail digitado não é válido.\nEx: email@email.com")
 }
 
   return(
-    <Styled.MainStyled>
+    <Styled.MainStyled pagetheme={theme}>
       <Styled.FormStyled onSubmit={handleSubmit(OnSubmit)}>
         <Styled.H3Styled>Faça seu login:</Styled.H3Styled>
         <Styled.HrStyled/>
@@ -57,7 +57,7 @@ alert("O e-mail digitado não é válido.\nEx: email@email.com")
         <Styled.ButtonStyled 
         type="submit"
         >
-          Enviar
+          Entrar
         </Styled.ButtonStyled>
       </Styled.FormStyled>
     </Styled.MainStyled>

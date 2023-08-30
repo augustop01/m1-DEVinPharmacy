@@ -1,12 +1,15 @@
 import { createContext, useEffect, useState } from "react";
 import { useLocalStorage } from "../hooks/useLocalStorage";
 import { ContextProps, ReactProps } from "./interfaces";
+import { useTheme } from "../hooks/useTheme";
+
 
 const AppContext = createContext({} as ContextProps);
 
 function AppProvider({children}: ReactProps) {
   const {value, setValue} = useLocalStorage('user', {});
   const [user, setUser] = useState({});
+  const {theme, toggleTheme, setMode} = useTheme();
 
   useEffect(() => {
     if(value) {
@@ -18,8 +21,17 @@ function AppProvider({children}: ReactProps) {
     setValue({})
   }
 
+  useEffect(() => {
+    const load = async () => {
+      const current = await localStorage.getItem('theme')
+      return setMode(current!)
+    }
+    load()
+  }, [theme, toggleTheme])
+
+
   return (
-    <AppContext.Provider value={{value, setValue, user, logout}}>
+    <AppContext.Provider value={{value, setValue, user, logout, toggleTheme, theme}}>
       {children}
     </AppContext.Provider>
   )

@@ -1,14 +1,7 @@
-import {styled} from "styled-components";
+import { css } from "styled-components";
+import { styled } from "styled-components";
 
 
-export const NoProductMain = styled.main`
-display: flex;
-flex-direction: column;
-align-items: center;
-justify-content: center;
-background-color: #e6e6e6;
-height: calc(100vh - 4rem);
-`
 
 export const NoProductDiv = styled.div`
 display: flex;
@@ -52,13 +45,42 @@ width: fit-content;
 }
 `
 
-export const MainStyled = styled.main`
+const empLightMode = css`
 display: flex;
 flex-direction: column;
 align-items: center;
+justify-content: center;
 background-color: #e6e6e6;
-min-height: calc(100vh - 4rem);
-max-height: fit-content;
+height: calc(100vh - 4rem);
+`
+
+const empDarkMode = css`
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: center;
+background-color: #0d1e1e;
+height: calc(100vh - 4rem);
+${NoProductDiv}{
+  background-image: url('img/med-tempDM.png');
+}
+${NoProductH1}{
+  color: #43a4b5;
+}
+${NoProductA}{
+  color: #43a4b5;
+  &:hover{
+    color: #00d9ff;
+  }
+}
+${NoProductP}{
+  color: #6e7e82;
+}
+`
+
+export const NoProductMain = styled.main<{pagetheme: string}>`
+${(props) => props.pagetheme === 'light' && empLightMode}
+${(props) => props.pagetheme === 'dark' && empDarkMode}
 `
 
 export const FilterSectStyled = styled.section`
@@ -124,4 +146,56 @@ width: 90%;
 min-height: 50%;
 max-height: 86.5%;
 margin-bottom: 1rem;
+`
+
+const lightMode = css`
+display: flex;
+flex-direction: column;
+align-items: center;
+background-color: #e6e6e6;
+min-height: calc(100vh - 4rem);
+max-height: fit-content;
+`
+
+const darkMode = css`
+background-color: #0d1e1e;
+display: flex;
+flex-direction: column;
+align-items: center;
+min-height: calc(100vh - 4rem);
+max-height: fit-content;
+${InputStyled}{
+  background-color: #102a2e;
+  border-color: #102a2e;
+  color: #bde9f0;
+  &::placeholder{
+    color: #699298;
+  }
+  &:focus{
+    background-color: #0c2023;
+  }
+}
+${H2Styled}{
+  color: #d0dcde;
+}
+${SelectStyled}{
+  background-color: #102a2e;
+  border-color: #102a2e;
+  color: #bde9f0;
+  &::placeholder{
+    color: #699298;
+  }
+  &:focus{
+    background-color: #0c2023;
+  }
+}
+${CardsSectStyled}{
+  background-color: #1d3235;
+}
+`
+
+export const MainStyled = styled.main<{pagetheme: string}>`
+${(props) => props.pagetheme === 'light' && lightMode}
+${(props) => props.pagetheme === 'dark' && darkMode}
+
 `
