@@ -68,6 +68,7 @@ function NewProduct() {
     <Styled.MainStyled pagetheme={theme}>
       <Styled.FormStyled
         onSubmit={handleSubmit(onSubmit)}
+        autoComplete="off"
         > 
         <Styled.H1Styled>Cadastro de novo medicamento</Styled.H1Styled>
         <Styled.InfoStyled>

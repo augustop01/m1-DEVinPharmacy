@@ -5,6 +5,15 @@ import { useApp } from '../../hooks/useApp';
 function Header() {
   const {theme, toggleTheme, logout} = useApp();
 
+  function noTheme(){
+    if(theme == "null")
+    {
+      return toggleTheme();
+    }
+  }
+
+  noTheme()
+
   function doLogout(){
     const toDo = confirm('Você será redirecionado para a tela de Login.');
     if(toDo){
