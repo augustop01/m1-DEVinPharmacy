@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 
 function useTheme(){
-    const [theme, setTheme] = useState('');
+    const [theme, setTheme] = useState('light');
 
     function setMode(mode: string){
         window.localStorage.setItem('theme', mode)
@@ -14,9 +14,6 @@ function useTheme(){
 
     useEffect(() => {
         const localTheme = window.localStorage.getItem('theme');
-        if (localTheme === null){
-            return setTheme('light')
-        }
         setTheme(localTheme!)
     }, []);
 

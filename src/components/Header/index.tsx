@@ -3,9 +3,15 @@ import { useApp } from '../../hooks/useApp';
 
 
 function Header() {
-  const {theme, toggleTheme} = useApp();
+  const {theme, toggleTheme, logout} = useApp();
 
-  console.log(theme);
+  function doLogout(){
+    const toDo = confirm('Você será redirecionado para a tela de Login.');
+    if(toDo){
+      return logout()
+    }
+    return
+  }
 
   return(
     <Styled.PageHeader  pagetheme={theme}>
@@ -24,6 +30,10 @@ function Header() {
           <Styled.StyledLi>Novo Medicamento</Styled.StyledLi>
         </Styled.StyledA>
       </Styled.StyledUl>
+      {localStorage.getItem('user') != '{}' 
+      ? <Styled.LogoutButton onClick={doLogout}/>
+      : ""
+      }
     </Styled.PageHeader>
   )
 }

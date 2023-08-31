@@ -24,10 +24,13 @@ function AppProvider({children}: ReactProps) {
   useEffect(() => {
     const load = async () => {
       const current = await localStorage.getItem('theme')
+      if(current === 'null') {
+        return setMode('light')
+      }
       return setMode(current!)
     }
     load()
-  }, [theme, toggleTheme])
+  }, [toggleTheme])
 
 
   return (

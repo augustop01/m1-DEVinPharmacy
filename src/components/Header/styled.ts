@@ -11,14 +11,14 @@ export const StyledUl = styled.nav`
   padding: 0 3rem;
 `
 export const StyledA = styled.a`
-box-sizing: border-box;
-background-color: rgb(65, 149, 155);
-text-decoration: none;
-display: flex;
-align-items: center;
-justify-content: center;
-pointer-events: none;
-width: 100%;
+  box-sizing: border-box;
+  background-color: rgb(65, 149, 155);
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  width: 100%;
 &:hover{
   background-color: rgba(0, 0, 0, 0.1);
   transition: 0.2s;
@@ -33,7 +33,6 @@ box-sizing: border-box;
   justify-content: center;
   text-align: center;
   align-items: center;
-  /* -webkit-text-stroke: 1px blue; */
   color: #caedfc;
   font-size: 1.25rem;
   font-weight: 600;
@@ -112,6 +111,24 @@ border-radius: 50%;
 position: absolute;
 left: 0.3rem;
 &:hover{
+  cursor: pointer;
+  scale: 1.1;
+}
+`
+export const LogoutButton = styled.button`
+border: none;
+background-color: transparent;
+background-image: url('img/logout-circle-line.svg');
+background-size: 80%;
+background-repeat: no-repeat;
+background-position: center;
+position: absolute;
+right: 0.3rem;
+width: 2rem;
+height: 2rem;
+&:hover{
+  border-radius: 50%;
+  background-color: rgba(255, 0, 0, 0.25);
   cursor: pointer;
   scale: 1.1;
 }

@@ -7,7 +7,6 @@ function useModal() {
     setIsOpen(!isOpen)
   }
 
-
   return {
     isOpen,
     toggle
