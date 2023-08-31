@@ -93,12 +93,14 @@ height: 5rem;
 justify-content: space-around;
 align-items: center;
 width: 80%;
+margin: 0.5rem 0;
 `
 
 export const H2Styled = styled.h2`
 color: #327884;
 font-size: 2rem;
 width: 100%;
+margin: 0.5rem;
 `
 
 export const FormStyled = styled.form`

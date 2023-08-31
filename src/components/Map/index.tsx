@@ -32,7 +32,7 @@ function Map({positions, center}: MapProps) {
       positions.map(({lat, long, address, about}, index) => {
         return(
       <MarkerStyled position={[lat!, long!]} icon={markerIcon} key={index}>
-        <PopupStyled>
+        <PopupStyled pagetheme={theme}>
           <h3>{about?.tradingName}</h3>
           <p>{address?.street}, {address?.num} {address?.complement ? `- ${address.complement}` : ``}</p>
           <p>{address?.neighborhood}, {address?.city}, {address?.state} - {address?.cep}</p>
@@ -42,8 +42,6 @@ function Map({positions, center}: MapProps) {
           <a href={`https://wa.me/55${about?.cel}`}>{about?.cel}</a>
           <p>----------------</p>
           <p>{about?.corpName} - [CNPJ: {about?.cnpj}]</p>
-          
-          
         </PopupStyled>
       </MarkerStyled>
         )
