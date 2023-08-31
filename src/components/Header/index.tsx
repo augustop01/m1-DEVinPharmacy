@@ -1,29 +1,40 @@
-import {PageHeader, StyledA, StyledLi, StyledUl} from './styled'
+import * as Styled from './styled'
+import { useApp } from '../../hooks/useApp';
+
 
 function Header() {
+  const {theme, toggleTheme, logout} = useApp();
+
+  function doLogout(){
+    const toDo = confirm('Você será redirecionado para a tela de Login.');
+    if(toDo){
+      return logout()
+    }
+    return
+  }
+
   return(
-    <PageHeader>
-      <StyledUl>
-        <StyledA href='/'>
-          <StyledLi>Início</StyledLi>
-        </StyledA>
-        <StyledA href='/cadastro-farmacia'>
-          <StyledLi>Nova Farmácia</StyledLi>
-        </StyledA>
-        <StyledA href='/cadastro-medicamento'>
-          <StyledLi>Novo Medicamento</StyledLi>
-        </StyledA>
-        <StyledA href='/mapa-lojas'>
-          <StyledLi>Mapa</StyledLi>
-        </StyledA>
-        <StyledA href='/medicamentos'>
-          <StyledLi>Medicamentos</StyledLi>
-        </StyledA>
-        <StyledA href='/registro'>
-          <StyledLi>Registro</StyledLi>
-        </StyledA>
-      </StyledUl>
-    </PageHeader>
+    <Styled.PageHeader  pagetheme={theme}>
+      <Styled.ThemeButton onClick={toggleTheme} pagetheme={theme}/>
+      <Styled.StyledUl>
+        <Styled.StyledA href='/'>
+          <Styled.StyledLi>FARMÁCIAS</Styled.StyledLi>
+        </Styled.StyledA>
+        <Styled.StyledA href='/medicamentos'>
+          <Styled.StyledLi>Medicamentos</Styled.StyledLi>
+        </Styled.StyledA>
+        <Styled.StyledA href='/cadastro-farmacia'>
+          <Styled.StyledLi>Nova Farmácia</Styled.StyledLi>
+        </Styled.StyledA>
+        <Styled.StyledA href='/cadastro-medicamento'>
+          <Styled.StyledLi>Novo Medicamento</Styled.StyledLi>
+        </Styled.StyledA>
+      </Styled.StyledUl>
+      {localStorage.getItem('user') != '{}' 
+      ? <Styled.LogoutButton onClick={doLogout}/>
+      : ""
+      }
+    </Styled.PageHeader>
   )
 }
 

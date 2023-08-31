@@ -5,8 +5,10 @@ display: flex;
 justify-content: center;
 position: absolute;
 width: 100%;
-height: 140%;
+height: 100%;
 top: 0;
+left: 0;
+z-index: 1000;
 `
 export const ModalOverlayDiv = styled.div`
   overflow: visible;
@@ -16,6 +18,5 @@ export const ModalOverlayDiv = styled.div`
   position: sticky;
   justify-content: center;
   top: 3rem;
-  padding-bottom: -100vh;
   width: 100%;
 `

@@ -1,6 +1,6 @@
 import {createGlobalStyle} from 'styled-components'
 
-const GlobalStyle = createGlobalStyle`
+export const GlobalStyle = createGlobalStyle`
   *{
     box-sizing: border-box;
     margin: 0;
@@ -8,5 +8,3 @@ const GlobalStyle = createGlobalStyle`
     font-family: 'Poppins', sans-serif;
   }
 `
-
-export {GlobalStyle};

@@ -1,18 +1,19 @@
 import { AppProvider } from "./context";
-import { PublicRoutes } from "./routes/publicRoutes";
 import {BrowserRouter} from "react-router-dom";
-import { GlobalStyle } from "./style";
+import * as Styled from "./style";
 import { Header } from "./components/Header";
+import { RoutesApp } from "./routes";
 import 'leaflet/dist/leaflet.css';
 
 function App() {
+
   return (
-    <>
+      <>
     <BrowserRouter>
-      <GlobalStyle/>
+      <Styled.GlobalStyle/>
       <AppProvider>
         <Header/>
-        <PublicRoutes/>
+        <RoutesApp/>
       </AppProvider>
     </BrowserRouter>
     </>

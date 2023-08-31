@@ -1,8 +1,13 @@
 import { useForm } from "react-hook-form";
 import { ProductProps } from "./interfaces";
+import * as Styled from './styles'
+import {useEffect, useState} from 'react';
+import { useApp } from '../../hooks/useApp';
 
 function NewProduct() {
-  const { register, handleSubmit, reset } = useForm();
+  const { register, handleSubmit, setValue} = useForm();
+  const [medRegister, setMedRegister] = useState(false);
+  const {theme} = useApp();
   let products: ProductProps[] = [];
 
   if(localStorage.getItem("products")){
@@ -10,6 +15,11 @@ function NewProduct() {
   }
 
   function onSubmit(data: ProductProps) {
+    if(data.isControlled === '0'){
+      alert('Selecione o tipo do medicamento.')
+      return
+    }
+    try{
     if(!localStorage.getItem("products")){
       products = [];
     }
@@ -22,68 +32,94 @@ function NewProduct() {
     const i = products.length-1;
     products[i] = {...products[i], id: `${products.length}` || undefined}
     localStorage.setItem("products", JSON.stringify(products))
+    setMedRegister(true);
+  } catch(error){
+    console.log(error);
+  }
   }
 
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setMedRegister(false)
+    }, 3000)
+
+    return () => clearTimeout(timer);
+  }, [medRegister])
+
+  function select(e: React.FormEvent<HTMLInputElement>){
+    e.currentTarget.select();
+  }
+
+  function brReal(e: React.FormEvent<HTMLInputElement>){
+    const value = e.currentTarget.value.replace(/(\D)/g, '');
+    const price = Number(value);
+    setValue('price', value);
+    if(price > 0 && price < 100){
+      const newValue = value.replace(/(\d{1,2})/, '$1.00')
+      return setValue('price', newValue)
+    }
+    if(price > 99){
+      const newValue = value.replace(/(\d+)(\d{2})/, '$1.$2')
+      return setValue('price', newValue)
+    }
+}
+
   return (
-    <main>
-      <form
-        style={{
-          display: "flex",
-          flexDirection: "column",
-          width: "100%",
-          alignItems: "center",
-        }}
+    <Styled.MainStyled pagetheme={theme}>
+      <Styled.FormStyled
         onSubmit={handleSubmit(onSubmit)}
-      >
-        <h3>Cadastro de novo medicamento</h3>
-        <p>
-          Informe os dados do medicamento a ser adicionado ao banco de dados:
-        </p>
-        <input
+        > 
+        <Styled.H1Styled>Cadastro de novo medicamento</Styled.H1Styled>
+        <Styled.InfoStyled>
+        <Styled.InputStyled
           type="text"
           {...register("name")}
           alt="Digite o nome do medicamento"
           placeholder="Nome do medicamento"
           required
         />
-        <input
+        <Styled.InputStyled
           type="text"
           {...register("lab")}
           alt="Digite o laboratório do medicamento"
           placeholder="Laboratório do medicamento"
           required
         />
-        <input
+        <Styled.InputStyled
           type="text"
           {...register("dose")}
           alt="Digite a dosagem do medicamento"
           placeholder="Dosagem do medicamento"
           required
         />
-        <textarea
+        <Styled.TextAreaStyled
           {...register("description")}
           cols= {30}
           rows= {10}
           placeholder="Descrição do medicamenjto (opcional)"
         />
-        <input
+        <Styled.InputPriceStyled
           type="text"
           {...register("price")}
+          onBlur={brReal}
+          onFocus={select}
           alt="Digite o preço unitário do medicamento"
-          placeholder="(R$) Preço unitário"
+          placeholder="Preço unitário" 
+          title="Digite o preço unitário do medicamento"
           required
         />
-        <select {...register("isControlled") }>
-          <option value="option0" hidden>
+        <Styled.SelectStyled {...register("isControlled")}>
+          <Styled.OptionStyled value="0" hidden >
             Selecione o tipo do medicamento
-          </option>
-          <option value="false">Medicamento comum</option>
-          <option value="true">Medicamento controlado</option>
-        </select>
-        <button type="submit"> Cadastrar </button>
-        <input type="button" onClick={() => reset()} value=" Limpar " />
-      </form>
-    </main>
+          </Styled.OptionStyled>
+          <Styled.OptionStyled value="false">Medicamento comum</Styled.OptionStyled>
+          <Styled.OptionStyled value="true">Medicamento controlado</Styled.OptionStyled>
+        </Styled.SelectStyled>
+        <Styled.ButtonStyled type="submit"> Cadastrar </Styled.ButtonStyled>
+        {medRegister && <Styled.MedRegister>Novo medicamento foi cadastrado com sucesso.</Styled.MedRegister>}
+        </Styled.InfoStyled>
+      </Styled.FormStyled>
+    </Styled.MainStyled>
   );
 }
 

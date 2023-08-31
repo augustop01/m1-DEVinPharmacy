@@ -6,7 +6,6 @@ function Modal(props: ModalProps) {
     <>
     {props.isOpen && (
       <ModalDiv>
-        {/* <ModalBgDiv onClick={props.toggle}/> */}
         <ModalOverlayDiv>
             {props.children}
         </ModalOverlayDiv>

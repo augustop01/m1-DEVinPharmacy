@@ -1,28 +1,22 @@
-import { styled } from "styled-components";
 import { css } from "styled-components";
+import { styled } from "styled-components";
 
 export const FormStyled = styled.form`
+position: relative;
 background-color: transparent;
 border-radius: 1rem;
 box-sizing: border-box;
-padding: 1rem 0;
 display: flex;
 flex-direction: column;
-width: 60%;
-padding: 1rem 2rem;
+align-items: center;
+width: 50%;
 `
 
 export const H1Styled = styled.h1`
 color: #327884;
-`
-
-export const PStyled = styled.p`
-color: #419cac;
-font-weight: 500;
-`
-
-export const PageHr = styled.hr`
-  border-top: 3px solid #bbb;
+width: fit-content;
+text-align: center;
+margin-top: 1.5rem;
 `
 
 export const InfoStyled = styled.span`
@@ -31,20 +25,13 @@ border-radius: 0.5rem;
 background-color: #ffffff;
 margin: 1rem 0;
 display: flex;
-flex-wrap: wrap;
+flex-direction: column;
 align-items: center;
 justify-content: space-around;
 box-sizing: border-box;
-padding: 2rem 1rem;
-width: fit-content;
-height: 100%;
-`
-
-export const PForm = styled.p`
-color: #858585;
-position: absolute;
-top: 0.25rem;
-left: 2rem;
+padding: 1rem 1rem 0 1rem;
+width: 55%;
+height: 75vh;
 `
 
 export const InputStyled = styled.input`
@@ -52,13 +39,34 @@ border: none;
 text-align: center;
 border-bottom: #b1b1b1 2px solid;
 background-color: rgb(255, 255, 255);
-font-size: .9rem;
+font-size: 1rem;
 padding: .5rem .5rem 0rem .5rem;
 margin: .5rem 0;
 height: 2.5rem;
-width: 15rem;
+width: 80%;
 &::placeholder {
-  color: #a8a8a9;
+  color: #9e9ab6;
+}
+&:focus{
+  outline: none;
+  background-color: rgb(235, 235, 235);
+}
+`
+export const InputPriceStyled = styled(InputStyled)`
+`
+
+export const TextAreaStyled = styled.textarea`
+border: #b1b1b1 2px dashed;
+border-bottom: #b1b1b1 2px solid;
+border-radius: 0.25rem;
+background-color: rgb(245, 245, 245);
+font-size: 1rem;
+padding: .5rem 1rem 0rem 1rem;
+margin: .5rem 0;
+width: 80%;
+&::placeholder {
+  text-align: center;
+  color: #9e9ab6;
 }
 &:focus{
   outline: none;
@@ -66,44 +74,42 @@ width: 15rem;
 }
 `
 
-export const AddressStyled = styled.fieldset`
-border: #b8b8b8 2px dashed;
-position: relative;
-box-sizing: border-box;
-display: flex;
-justify-content: space-around;
-align-items: center;
-flex-wrap: wrap;
-border-radius: 0.5rem;
-margin: 0.5rem 1rem 0 1rem;
-padding: 1.5rem 0.5rem 0.5rem 0.5rem;
-min-height: 250px;
-${InputStyled}{
-  margin-top: 1.25rem;
-}`
-
-export const PAddress = styled(PForm)`
-left: 1rem;
+export const SelectStyled = styled.select`
+border: none;
+text-align: center;
+border-bottom: #b1b1b1 2px solid;
+background-color: rgb(255, 255, 255);
+font-size: 1rem;
+padding: .5rem .5rem 0rem .5rem;
+margin: .5rem 0;
+height: 2.5rem;
+width: 80%;
+&:first-child {
+  color: #9e9ab6;
+}
+&:focus{
+  outline: none;
+  background-color: rgb(235, 235, 235);
+}
 `
 
-export const GeolocInput = styled(InputStyled)`
-border-radius: 0.25rem;
-border: #b1b1b1 2px dashed;
-border-bottom: #b1b1b1 2px solid;
-font-size: 1rem;
+export const OptionStyled = styled.option`
+&:first-of-type{
+  color: #9e9ab6;
+}
 `
 
 export const ButtonStyled = styled.button`
 font-weight: 700;
 color: #1784ac;
 background-color: white;
-border: #179dac 2px solid;
-height: 2.25rem;
+border: #1784ac 2px solid;
+height: 2.5rem;
 width: 5.5rem;
 border-radius: 2rem;
-margin-top: 1.5rem;
+margin: 1.5rem 0;
 &:hover{
-  background-color: #179dac;
+  background-color: #1784ac;
   color: white;
   cursor: pointer;
 &:active{
@@ -112,21 +118,17 @@ margin-top: 1.5rem;
 }
 `
 
-export const PharmRegister = styled.p`
-display: flex;
-backdrop-filter: blur(5px);
-align-items: center;
+export const MedRegister = styled.p`
 position: absolute;
-width: 40%;
-height: 10rem;
-border-radius: 2rem;
+width: 90%;
+backdrop-filter: blur(5px);
+border-radius: 1rem;
 font-size: 1.25rem;
 text-align: center;
 background-color: rgba(216, 216, 216, 0.4);
 color: #00c200;
 font-weight: 500;
 `
-
 
 const lightMode = css`
 transition: 0.25s;
@@ -157,9 +159,6 @@ ${H1Styled}{
 ${InfoStyled}{
   background-color: #102a2e;
 }
-${PForm}{
-  color: #56757a;
-}
 ${InputStyled}{
   background-color: #102a2e;
   border-bottom: #749ba0 2px solid;
@@ -171,12 +170,25 @@ ${InputStyled}{
     background-color: #0c2023;
   }
 }
-${AddressStyled}{
-  border: #749ba0 2px dashed;
-}
-${GeolocInput}{
+${TextAreaStyled}{
+  background-color: #0c2124;
   border: #749ba0 2px dashed;
   border-bottom: #749ba0 2px solid;
+  color: #bde9f0;
+  &::placeholder{
+    color: #699298;
+  }
+  &:focus{
+    background-color: #09181a;
+  }
+}
+${SelectStyled}{
+  background-color: #102a2e;
+  border-bottom: #749ba0 2px solid;
+  color: #bde9f0;
+  &:focus{
+    background-color: #0c2023;
+  }
 }
 ${ButtonStyled}{
   background-color: transparent;
@@ -188,7 +200,7 @@ ${ButtonStyled}{
     color: #0c2023;
   }
 }
-${PharmRegister}{
+${MedRegister}{
   background-color: rgba(103, 136, 140, 0.486);
 }
 `
@@ -196,5 +208,4 @@ ${PharmRegister}{
 export const MainStyled = styled.main<{pagetheme: string}>`
 ${(props) => props.pagetheme === 'light' && lightMode}
 ${(props) => props.pagetheme === 'dark' && darkMode}
-
 `
